@@ -1,0 +1,39 @@
+### 扫盲重点内容：
+
+- 区块链共识算法（https://github.com/MetaNodeAcademy/WeeklyTask/blob/main/%E7%AC%AC%201%20%E5%91%A8%20%E6%8E%8C%E6%8F%A1%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/2.%20%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF%E3%80%81%E5%85%B1%E8%AF%86%E6%9C%BA%E5%88%B6%E5%9F%BA%E7%A1%80/%E5%85%B1%E8%AF%86%E6%9C%BA%E5%88%B6/%E5%85%B1%E8%AF%86%E6%9C%BA%E5%88%B6%E5%9F%BA%E7%A1%80.md#1-pow-%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95）（pow pos dpos）
+- 北京大学肖臻老师《区块链技术与应用》
+- 加密钱包和网络的使用
+- 搞清楚以下问题
+  - 简述POW挖矿的过程，怎么处理分叉的情况
+  - 为什么说区块链是不可篡改的（密码学、共识）
+  - POW的难度调整机制
+  - 什么是双花，什么情况下会产生
+  - POW与POS的区别是什么，优缺点
+  - DPOS的机制，优缺点
+- https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/web3%E6%89%AB%E7%9B%B2.md  （学习入口）
+
+
+
+### Dapp后端基础
+
+https://github.com/MetaNodeAcademy/golang-learning/blob/main/lesson-01/README.md  （基础语法）
+
+https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/backend/homework01.md  （任务1）
+
+https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/backend/homework02.md  （任务2）
+
+
+
+https://github.com/MetaNodeAcademy/golang-learning/tree/main/lesson-02 （gorm）
+
+https://github.com/MetaNodeAcademy/golang-learning/tree/main/lesson-03（gin）
+
+https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/backend/homework03.md（任务3）
+
+https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/backend/homework04.md（任务4）
+
+
+
+https://github.com/flipped-aurora/gin-vue-admin	go项目结构参考
+
+https://github.com/xinliangnote/go-gin-api
