@@ -1,0 +1,439 @@
+SCHED 0ms: gomaxprocs=16 idleprocs=14 threads=3 spinningthreads=1 needspinning=0 idlethreads=0 runqueue=0 gcwaiting=false nmidlelocked=0 stopwait=0 sysmonwait=false
+  P0: status=1 schedtick=0 syscalltick=0 m=0 runqsize=0 gfreecnt=0 timerslen=0
+  P1: status=1 schedtick=0 syscalltick=0 m=2 runqsize=0 gfreecnt=0 timerslen=0
+  P2: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P3: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P4: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P5: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P6: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P7: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P8: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P9: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P10: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P11: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P12: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P13: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P14: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P15: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  M2: p=1 curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M1: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M0: p=0 curg=nil mallocing=0 throwing=0 preemptoff= locks=1 dying=0 spinning=false blocked=false lockedg=1
+  G1: status=1() m=nil lockedm=0
+  G2: status=1() m=nil lockedm=nil
+SCHED 1008ms: gomaxprocs=16 idleprocs=16 threads=22 spinningthreads=0 needspinning=0 idlethreads=16 runqueue=0 gcwaiting=false nmidlelocked=1 stopwait=0 sysmonwait=false
+  P0: status=0 schedtick=80 syscalltick=3475 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P1: status=0 schedtick=69 syscalltick=1509 m=nil runqsize=0 gfreecnt=5 timerslen=0
+  P2: status=0 schedtick=88 syscalltick=1455 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P3: status=0 schedtick=66 syscalltick=976 m=nil runqsize=0 gfreecnt=6 timerslen=0
+  P4: status=0 schedtick=55 syscalltick=611 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P5: status=0 schedtick=62 syscalltick=607 m=nil runqsize=0 gfreecnt=6 timerslen=1
+  P6: status=0 schedtick=63 syscalltick=596 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P7: status=0 schedtick=57 syscalltick=419 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P8: status=0 schedtick=59 syscalltick=601 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P9: status=0 schedtick=49 syscalltick=220 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P10: status=0 schedtick=50 syscalltick=263 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P11: status=0 schedtick=43 syscalltick=151 m=nil runqsize=0 gfreecnt=1 timerslen=0
+  P12: status=0 schedtick=47 syscalltick=99 m=nil runqsize=0 gfreecnt=1 timerslen=0
+  P13: status=0 schedtick=45 syscalltick=110 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P14: status=0 schedtick=45 syscalltick=147 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P15: status=0 schedtick=21 syscalltick=103 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  M21: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M20: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M19: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M18: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M17: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M16: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M15: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M14: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M13: p=nil curg=152 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M12: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M11: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M10: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=177
+  M9: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M8: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M7: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M6: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M5: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M4: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M3: p=nil curg=132 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M2: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M1: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M0: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  G1: status=4(sync.WaitGroup.Wait) m=nil lockedm=nil
+  G2: status=4(force gc (idle)) m=nil lockedm=nil
+  G3: status=4(GC sweep wait) m=nil lockedm=nil
+  G4: status=4(GC scavenge wait) m=nil lockedm=nil
+  G5: status=4(GOMAXPROCS updater (idle)) m=nil lockedm=nil
+  G17: status=4(finalizer wait) m=nil lockedm=nil
+  G18: status=4(cleanup wait) m=nil lockedm=nil
+  G19: status=6() m=nil lockedm=nil
+  G146: status=4(select) m=nil lockedm=nil
+  G28: status=6() m=nil lockedm=nil
+  G115: status=6() m=nil lockedm=nil
+  G6: status=6() m=nil lockedm=nil
+  G24: status=6() m=nil lockedm=nil
+  G25: status=6() m=nil lockedm=nil
+  G33: status=6() m=nil lockedm=nil
+  G8: status=6() m=nil lockedm=nil
+  G27: status=6() m=nil lockedm=nil
+  G114: status=6() m=nil lockedm=nil
+  G49: status=6() m=nil lockedm=nil
+  G97: status=6() m=nil lockedm=nil
+  G36: status=6() m=nil lockedm=nil
+  G130: status=6() m=nil lockedm=nil
+  G38: status=6() m=nil lockedm=nil
+  G9: status=6() m=nil lockedm=nil
+  G65: status=4(GC worker (idle)) m=nil lockedm=nil
+  G66: status=4(GC worker (idle)) m=nil lockedm=nil
+  G67: status=4(GC worker (idle)) m=nil lockedm=nil
+  G68: status=4(GC worker (idle)) m=nil lockedm=nil
+  G69: status=4(GC worker (idle)) m=nil lockedm=nil
+  G70: status=4(GC worker (idle)) m=nil lockedm=nil
+  G71: status=4(GC worker (idle)) m=nil lockedm=nil
+  G72: status=4(GC worker (idle)) m=nil lockedm=nil
+  G73: status=4(GC worker (idle)) m=nil lockedm=nil
+  G74: status=4(GC worker (idle)) m=nil lockedm=nil
+  G75: status=4(GC worker (idle)) m=nil lockedm=nil
+  G76: status=4(GC worker (idle)) m=nil lockedm=nil
+  G77: status=4(GC worker (idle)) m=nil lockedm=nil
+  G78: status=4(GC worker (idle)) m=nil lockedm=nil
+  G79: status=4(GC worker (idle)) m=nil lockedm=nil
+  G80: status=4(GC worker (idle)) m=nil lockedm=nil
+  G39: status=6() m=nil lockedm=nil
+  G40: status=6() m=nil lockedm=nil
+  G113: status=6() m=nil lockedm=nil
+  G52: status=6() m=nil lockedm=nil
+  G81: status=6() m=nil lockedm=nil
+  G82: status=6() m=nil lockedm=nil
+  G83: status=6() m=nil lockedm=nil
+  G84: status=6() m=nil lockedm=nil
+  G29: status=6() m=nil lockedm=nil
+  G99: status=6() m=nil lockedm=nil
+  G31: status=6() m=nil lockedm=nil
+  G32: status=6() m=nil lockedm=nil
+  G129: status=6() m=nil lockedm=nil
+  G131: status=6() m=nil lockedm=nil
+  G10: status=6() m=nil lockedm=nil
+  G11: status=6() m=nil lockedm=nil
+  G12: status=6() m=nil lockedm=nil
+  G13: status=6() m=nil lockedm=nil
+  G98: status=6() m=nil lockedm=nil
+  G15: status=6() m=nil lockedm=nil
+  G145: status=4(select) m=nil lockedm=nil
+  G147: status=4(select) m=nil lockedm=nil
+  G148: status=4(select) m=nil lockedm=nil
+  G149: status=4(select) m=nil lockedm=nil
+  G150: status=4(select) m=nil lockedm=nil
+  G151: status=4(select) m=nil lockedm=nil
+  G152: status=3(chan send) m=13 lockedm=nil
+  G153: status=4(select) m=nil lockedm=nil
+  G154: status=4(select) m=nil lockedm=nil
+  G155: status=4(select) m=nil lockedm=nil
+  G156: status=4(select) m=nil lockedm=nil
+  G157: status=4(select) m=nil lockedm=nil
+  G158: status=4(select) m=nil lockedm=nil
+  G159: status=4(select) m=nil lockedm=nil
+  G160: status=4(select) m=nil lockedm=nil
+  G165: status=4(chan receive) m=nil lockedm=nil
+  G162: status=6() m=nil lockedm=nil
+  G132: status=3() m=3 lockedm=nil
+  G177: status=4(select) m=nil lockedm=10
+SCHED 0ms: gomaxprocs=16 idleprocs=14 threads=4 spinningthreads=1 needspinning=0 idlethreads=0 runqueue=0 gcwaiting=false nmidlelocked=0 stopwait=0 sysmonwait=false
+  P0: status=1 schedtick=0 syscalltick=0 m=3 runqsize=1 gfreecnt=0 timerslen=0
+  P1: status=1 schedtick=0 syscalltick=0 m=2 runqsize=0 gfreecnt=0 timerslen=0
+  P2: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P3: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P4: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P5: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P6: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P7: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P8: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P9: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P10: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P11: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P12: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P13: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P14: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P15: status=0 schedtick=0 syscalltick=0 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  M3: p=0 curg=nil mallocing=0 throwing=0 preemptoff= locks=1 dying=0 spinning=false blocked=false lockedg=nil
+  M2: p=1 curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M1: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M0: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=1 dying=0 spinning=false blocked=false lockedg=1
+  G1: status=1(chan receive) m=nil lockedm=0
+  G2: status=1() m=nil lockedm=nil
+  G3: status=1() m=nil lockedm=nil
+  G4: status=4(GC scavenge wait) m=nil lockedm=nil
+=== GMP 调度示例 ===
+逻辑CPU数量: 16
+当前 GOMAXPROCS: 16
+调整后的 GOMAXPROCS: 2
+
+SCHED 2009ms: gomaxprocs=16 idleprocs=16 threads=22 spinningthreads=0 needspinning=0 idlethreads=17 runqueue=0 gcwaiting=false nmidlelocked=1 stopwait=0 sysmonwait=false
+  P0: status=0 schedtick=80 syscalltick=3475 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P1: status=0 schedtick=69 syscalltick=1509 m=nil runqsize=0 gfreecnt=5 timerslen=0
+  P2: status=0 schedtick=88 syscalltick=1455 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P3: status=0 schedtick=66 syscalltick=976 m=nil runqsize=0 gfreecnt=6 timerslen=0
+  P4: status=0 schedtick=55 syscalltick=611 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P5: status=0 schedtick=62 syscalltick=607 m=nil runqsize=0 gfreecnt=6 timerslen=0
+  P6: status=0 schedtick=63 syscalltick=596 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P7: status=0 schedtick=57 syscalltick=419 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P8: status=0 schedtick=59 syscalltick=601 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P9: status=0 schedtick=49 syscalltick=220 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P10: status=0 schedtick=50 syscalltick=263 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P11: status=0 schedtick=43 syscalltick=151 m=nil runqsize=0 gfreecnt=1 timerslen=0
+  P12: status=0 schedtick=47 syscalltick=99 m=nil runqsize=0 gfreecnt=1 timerslen=0
+  P13: status=0 schedtick=45 syscalltick=110 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P14: status=0 schedtick=45 syscalltick=147 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P15: status=0 schedtick=21 syscalltick=103 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  M21: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M20: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M19: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M18: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M17: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M16: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M15: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M14: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M13: p=nil curg=152 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M12: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M11: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M10: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=177
+  M9: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M8: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M7: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M6: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M5: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M4: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M3: p=nil curg=132 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M2: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M1: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M0: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  G1: status=4(sync.WaitGroup.Wait) m=nil lockedm=nil
+  G2: status=4(force gc (idle)) m=nil lockedm=nil
+  G3: status=4(GC sweep wait) m=nil lockedm=nil
+  G4: status=4(GC scavenge wait) m=nil lockedm=nil
+  G5: status=4(GOMAXPROCS updater (idle)) m=nil lockedm=nil
+  G17: status=4(finalizer wait) m=nil lockedm=nil
+  G18: status=4(cleanup wait) m=nil lockedm=nil
+  G19: status=6() m=nil lockedm=nil
+  G146: status=4(select) m=nil lockedm=nil
+  G28: status=6() m=nil lockedm=nil
+  G115: status=6() m=nil lockedm=nil
+  G6: status=6() m=nil lockedm=nil
+  G24: status=6() m=nil lockedm=nil
+  G25: status=6() m=nil lockedm=nil
+  G33: status=6() m=nil lockedm=nil
+  G8: status=6() m=nil lockedm=nil
+  G27: status=6() m=nil lockedm=nil
+  G114: status=6() m=nil lockedm=nil
+  G49: status=6() m=nil lockedm=nil
+  G97: status=6() m=nil lockedm=nil
+  G36: status=6() m=nil lockedm=nil
+  G130: status=6() m=nil lockedm=nil
+  G38: status=6() m=nil lockedm=nil
+  G9: status=6() m=nil lockedm=nil
+  G65: status=4(GC worker (idle)) m=nil lockedm=nil
+  G66: status=4(GC worker (idle)) m=nil lockedm=nil
+  G67: status=4(GC worker (idle)) m=nil lockedm=nil
+  G68: status=4(GC worker (idle)) m=nil lockedm=nil
+  G69: status=4(GC worker (idle)) m=nil lockedm=nil
+  G70: status=4(GC worker (idle)) m=nil lockedm=nil
+  G71: status=4(GC worker (idle)) m=nil lockedm=nil
+  G72: status=4(GC worker (idle)) m=nil lockedm=nil
+  G73: status=4(GC worker (idle)) m=nil lockedm=nil
+  G74: status=4(GC worker (idle)) m=nil lockedm=nil
+  G75: status=4(GC worker (idle)) m=nil lockedm=nil
+  G76: status=4(GC worker (idle)) m=nil lockedm=nil
+  G77: status=4(GC worker (idle)) m=nil lockedm=nil
+  G78: status=4(GC worker (idle)) m=nil lockedm=nil
+  G79: status=4(GC worker (idle)) m=nil lockedm=nil
+  G80: status=4(GC worker (idle)) m=nil lockedm=nil
+  G39: status=6() m=nil lockedm=nil
+  G40: status=6() m=nil lockedm=nil
+  G113: status=6() m=nil lockedm=nil
+  G52: status=6() m=nil lockedm=nil
+  G81: status=6() m=nil lockedm=nil
+  G82: status=6() m=nil lockedm=nil
+  G83: status=6() m=nil lockedm=nil
+  G84: status=6() m=nil lockedm=nil
+  G29: status=6() m=nil lockedm=nil
+  G99: status=6() m=nil lockedm=nil
+  G31: status=6() m=nil lockedm=nil
+  G32: status=6() m=nil lockedm=nil
+  G129: status=6() m=nil lockedm=nil
+  G131: status=6() m=nil lockedm=nil
+  G10: status=6() m=nil lockedm=nil
+  G11: status=6() m=nil lockedm=nil
+  G12: status=6() m=nil lockedm=nil
+  G13: status=6() m=nil lockedm=nil
+  G98: status=6() m=nil lockedm=nil
+  G15: status=6() m=nil lockedm=nil
+  G145: status=4(select) m=nil lockedm=nil
+  G147: status=4(select) m=nil lockedm=nil
+  G148: status=4(select) m=nil lockedm=nil
+  G149: status=4(select) m=nil lockedm=nil
+  G150: status=4(select) m=nil lockedm=nil
+  G151: status=4(select) m=nil lockedm=nil
+  G152: status=3(chan send) m=13 lockedm=nil
+  G153: status=4(select) m=nil lockedm=nil
+  G154: status=4(select) m=nil lockedm=nil
+  G155: status=4(select) m=nil lockedm=nil
+  G156: status=4(select) m=nil lockedm=nil
+  G157: status=4(select) m=nil lockedm=nil
+  G158: status=4(select) m=nil lockedm=nil
+  G159: status=4(select) m=nil lockedm=nil
+  G160: status=4(select) m=nil lockedm=nil
+  G165: status=4(chan receive) m=nil lockedm=nil
+  G162: status=6() m=nil lockedm=nil
+  G132: status=3() m=3 lockedm=nil
+  G177: status=4(select) m=nil lockedm=10
+SCHED 1005ms: gomaxprocs=2 idleprocs=0 threads=5 spinningthreads=0 needspinning=1 idlethreads=2 runqueue=3 gcwaiting=false nmidlelocked=0 stopwait=0 sysmonwait=false
+  P0: status=1 schedtick=48 syscalltick=8 m=0 runqsize=0 gfreecnt=0 timerslen=0
+  P1: status=1 schedtick=48 syscalltick=0 m=2 runqsize=3 gfreecnt=0 timerslen=0
+  M4: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M3: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M2: p=1 curg=14 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M1: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M0: p=0 curg=7 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  G1: status=4(sync.WaitGroup.Wait) m=nil lockedm=nil
+  G2: status=4(force gc (idle)) m=nil lockedm=nil
+  G3: status=4(GC sweep wait) m=nil lockedm=nil
+  G4: status=4(GC scavenge wait) m=nil lockedm=nil
+  G5: status=4(GOMAXPROCS updater (idle)) m=nil lockedm=nil
+  G6: status=4(finalizer wait) m=nil lockedm=nil
+  G7: status=2() m=0 lockedm=nil
+  G8: status=1() m=nil lockedm=nil
+  G9: status=1() m=nil lockedm=nil
+  G10: status=1() m=nil lockedm=nil
+  G11: status=1() m=nil lockedm=nil
+  G12: status=1() m=nil lockedm=nil
+  G13: status=1() m=nil lockedm=nil
+  G14: status=2() m=2 lockedm=nil
+Goroutine 3 完成，结果=75000000
+Goroutine 2 完成，结果=49999999
+SCHED 3009ms: gomaxprocs=16 idleprocs=16 threads=22 spinningthreads=0 needspinning=0 idlethreads=17 runqueue=0 gcwaiting=false nmidlelocked=1 stopwait=0 sysmonwait=false
+  P0: status=0 schedtick=80 syscalltick=3475 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P1: status=0 schedtick=69 syscalltick=1509 m=nil runqsize=0 gfreecnt=5 timerslen=0
+  P2: status=0 schedtick=88 syscalltick=1455 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P3: status=0 schedtick=66 syscalltick=976 m=nil runqsize=0 gfreecnt=6 timerslen=0
+  P4: status=0 schedtick=55 syscalltick=611 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P5: status=0 schedtick=62 syscalltick=607 m=nil runqsize=0 gfreecnt=6 timerslen=0
+  P6: status=0 schedtick=63 syscalltick=596 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P7: status=0 schedtick=57 syscalltick=419 m=nil runqsize=0 gfreecnt=2 timerslen=0
+  P8: status=0 schedtick=59 syscalltick=601 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P9: status=0 schedtick=49 syscalltick=220 m=nil runqsize=0 gfreecnt=4 timerslen=0
+  P10: status=0 schedtick=50 syscalltick=263 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P11: status=0 schedtick=43 syscalltick=151 m=nil runqsize=0 gfreecnt=1 timerslen=0
+  P12: status=0 schedtick=47 syscalltick=99 m=nil runqsize=0 gfreecnt=1 timerslen=0
+  P13: status=0 schedtick=45 syscalltick=110 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P14: status=0 schedtick=45 syscalltick=147 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  P15: status=0 schedtick=21 syscalltick=103 m=nil runqsize=0 gfreecnt=0 timerslen=0
+  M21: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M20: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M19: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M18: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M17: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M16: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M15: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M14: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M13: p=nil curg=152 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M12: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M11: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M10: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=177
+  M9: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M8: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M7: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M6: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M5: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M4: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M3: p=nil curg=132 mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=false lockedg=nil
+  M2: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  M1: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=2 dying=0 spinning=false blocked=false lockedg=nil
+  M0: p=nil curg=nil mallocing=0 throwing=0 preemptoff= locks=0 dying=0 spinning=false blocked=true lockedg=nil
+  G1: status=4(sync.WaitGroup.Wait) m=nil lockedm=nil
+  G2: status=4(force gc (idle)) m=nil lockedm=nil
+  G3: status=4(GC sweep wait) m=nil lockedm=nil
+  G4: status=4(GC scavenge wait) m=nil lockedm=nil
+  G5: status=4(GOMAXPROCS updater (idle)) m=nil lockedm=nil
+  G17: status=4(finalizer wait) m=nil lockedm=nil
+  G18: status=4(cleanup wait) m=nil lockedm=nil
+  G19: status=6() m=nil lockedm=nil
+  G146: status=4(select) m=nil lockedm=nil
+  G28: status=6() m=nil lockedm=nil
+  G115: status=6() m=nil lockedm=nil
+  G6: status=6() m=nil lockedm=nil
+  G24: status=6() m=nil lockedm=nil
+  G25: status=6() m=nil lockedm=nil
+  G33: status=6() m=nil lockedm=nil
+  G8: status=6() m=nil lockedm=nil
+  G27: status=6() m=nil lockedm=nil
+  G114: status=6() m=nil lockedm=nil
+  G49: status=6() m=nil lockedm=nil
+  G97: status=6() m=nil lockedm=nil
+  G36: status=6() m=nil lockedm=nil
+  G130: status=6() m=nil lockedm=nil
+  G38: status=6() m=nil lockedm=nil
+  G9: status=6() m=nil lockedm=nil
+  G65: status=4(GC worker (idle)) m=nil lockedm=nil
+  G66: status=4(GC worker (idle)) m=nil lockedm=nil
+  G67: status=4(GC worker (idle)) m=nil lockedm=nil
+  G68: status=4(GC worker (idle)) m=nil lockedm=nil
+  G69: status=4(GC worker (idle)) m=nil lockedm=nil
+  G70: status=4(GC worker (idle)) m=nil lockedm=nil
+  G71: status=4(GC worker (idle)) m=nil lockedm=nil
+  G72: status=4(GC worker (idle)) m=nil lockedm=nil
+  G73: status=4(GC worker (idle)) m=nil lockedm=nil
+  G74: status=4(GC worker (idle)) m=nil lockedm=nil
+  G75: status=4(GC worker (idle)) m=nil lockedm=nil
+  G76: status=4(GC worker (idle)) m=nil lockedm=nil
+  G77: status=4(GC worker (idle)) m=nil lockedm=nil
+  G78: status=4(GC worker (idle)) m=nil lockedm=nil
+  G79: status=4(GC worker (idle)) m=nil lockedm=nil
+  G80: status=4(GC worker (idle)) m=nil lockedm=nil
+  G39: status=6() m=nil lockedm=nil
+  G40: status=6() m=nil lockedm=nil
+  G113: status=6() m=nil lockedm=nil
+  G52: status=6() m=nil lockedm=nil
+  G81: status=6() m=nil lockedm=nil
+  G82: status=6() m=nil lockedm=nil
+  G83: status=6() m=nil lockedm=nil
+  G84: status=6() m=nil lockedm=nil
+  G29: status=6() m=nil lockedm=nil
+  G99: status=6() m=nil lockedm=nil
+  G31: status=6() m=nil lockedm=nil
+  G32: status=6() m=nil lockedm=nil
+  G129: status=6() m=nil lockedm=nil
+  G131: status=6() m=nil lockedm=nil
+  G10: status=6() m=nil lockedm=nil
+  G11: status=6() m=nil lockedm=nil
+  G12: status=6() m=nil lockedm=nil
+  G13: status=6() m=nil lockedm=nil
+  G98: status=6() m=nil lockedm=nil
+  G15: status=6() m=nil lockedm=nil
+  G145: status=4(select) m=nil lockedm=nil
+  G147: status=4(select) m=nil lockedm=nil
+  G148: status=4(select) m=nil lockedm=nil
+  G149: status=4(select) m=nil lockedm=nil
+  G150: status=4(select) m=nil lockedm=nil
+  G151: status=4(select) m=nil lockedm=nil
+  G152: status=3(chan send) m=13 lockedm=nil
+  G153: status=4(select) m=nil lockedm=nil
+  G154: status=4(select) m=nil lockedm=nil
+  G155: status=4(select) m=nil lockedm=nil
+  G156: status=4(select) m=nil lockedm=nil
+  G157: status=4(select) m=nil lockedm=nil
+  G158: status=4(select) m=nil lockedm=nil
+  G159: status=4(select) m=nil lockedm=nil
+  G160: status=4(select) m=nil lockedm=nil
+  G165: status=4(chan receive) m=nil lockedm=nil
+  G162: status=6() m=nil lockedm=nil
+  G132: status=3() m=3 lockedm=nil
+  G177: status=4(select) m=nil lockedm=10
+Goroutine 1 完成，结果=25000000
+Goroutine 4 完成，结果=100000000
+Goroutine 6 完成，结果=149999997
+Goroutine 5 完成，结果=124999996
+Goroutine 0 完成，结果=0
+Goroutine 7 完成，结果=175000000
+
+所有任务完成，耗时：1.770429915s
+提示：运行时可配合命令 `GODEBUG=schedtrace=1000,scheddetail=1 go run 06-gmp.go` 观察调度日志。
