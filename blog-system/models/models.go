@@ -18,10 +18,12 @@ type User struct {
 // Post 文章模型
 type Post struct {
 	gorm.Model
-	Title   string `gorm:"not null;size:200" json:"title"`    // 文章标题
-	Content string `gorm:"not null;type:text" json:"content"` // 文章内容
-	UserID  uint   `gorm:"not null" json:"user_id"`           // 关联用户ID
-	User    User   `gorm:"foreignKey:UserID" json:"user"`     // 用户关联
+	Id       uint      `gorm:"not null" json:"id"`                // id
+	Title    string    `gorm:"not null;size:200" json:"title"`    // 文章标题
+	Content  string    `gorm:"not null;type:text" json:"content"` // 文章内容
+	UserID   uint      `gorm:"not null" json:"user_id"`           // 关联用户ID
+	User     User      `gorm:"foreignKey:UserID" json:"user"`     // 用户关联
+	Comments []Comment // 一对多关联，注意这里是复数 Comments
 }
 
 // Comment 评论模型

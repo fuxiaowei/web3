@@ -5,6 +5,7 @@ import (
 	"blog-system/models"
 	"blog-system/utils"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -49,10 +50,18 @@ func GetPosts(c *gin.Context) {
 // GetPost 获取单篇文章
 func GetPost(c *gin.Context) {
 	// 获取文章ID
-	id := c.Param("id")
+	idStr := c.Param("id")
+	utils.Logger.Info("获取文章详情，id: ", idStr)
+
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, utils.ErrResponse(utils.ERROR, "无效的文章ID"))
+		return
+	}
+
 	var post models.Post
 	// 查询文章（关联用户+评论）
-	if err := config.DB.Preload("User").Preload("Comment.User").First(&post, id).Error; err != nil {
+	if err := config.DB.Preload("User").Preload("Comments.User").First(&post, id).Error; err != nil {
 		c.JSON(http.StatusNotFound, utils.ErrResponse(utils.PostNotExist, "文章不存在"))
 		return
 	}
@@ -63,6 +72,8 @@ func GetPost(c *gin.Context) {
 // UpdatePost 更新文章
 func UpdatePost(c *gin.Context) {
 	id := c.Param("id")
+	utils.Logger.Info("更新文章，id: ", id)
+
 	userID, _ := c.Get("userID")
 
 	var post models.Post
@@ -99,6 +110,8 @@ func UpdatePost(c *gin.Context) {
 // DeletePost 删除文章
 func DeletePost(c *gin.Context) {
 	id := c.Param("id")
+	utils.Logger.Info("删除文章，id: ", id)
+
 	userID, _ := c.Get("userID")
 
 	var post models.Post
