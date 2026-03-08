@@ -31,9 +31,36 @@ type Comment struct {
 	gorm.Model
 	Content string `gorm:"not null;type:text" json:"content"` // 评论内容
 	UserID  uint   `gorm:"not null" json:"user_id"`           // 关联用户ID
-	PostID  uint   `gorm:"not null" json:"post_id"`           // 关联文章ID
+	PostID  string `gorm:"not null" json:"post_id"`           // 关联文章ID
 	User    User   `gorm:"foreignKey:UserID" json:"user"`     // 用户关联
 	Post    Post   `gorm:"foreignKey:PostID" json:"post"`     // 文章关联
+}
+
+// CheckUserExist 根据用户ID查询用户是否存在（包含软删除过滤）
+// 参数：userID - 待查询的用户ID（uint类型，匹配你的模型主键）
+// 返回：bool - 存在返回true，不存在返回false；error - 数据库查询错误（非用户不存在）
+func CheckUserExist(userID uint) (bool, error) {
+	var count int64
+	// 核心逻辑：根据主键ID计数，自动过滤软删除数据（GORM默认行为）
+	err := config.DB.Model(&User{}).Where("id = ?", userID).Count(&count).Error
+	if err != nil {
+		return false, err // 仅返回数据库查询异常（如连接失败）
+	}
+	// 计数>0则存在，否则不存在
+	return count > 0, nil
+}
+
+// 拓展：如果需要查询并返回用户完整信息（后续可用）
+func GetUserByID(userID uint) (*User, error) {
+	var user User
+	err := config.DB.First(&user, userID).Error
+	if err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return nil, nil // 不存在返回nil，无错误
+		}
+		return nil, err // 数据库错误
+	}
+	return &user, nil
 }
 
 // 初始化数据库表

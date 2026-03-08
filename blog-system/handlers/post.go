@@ -24,6 +24,20 @@ func CreatePost(c *gin.Context) {
 	userID, _ := c.Get("userID")
 	post.UserID = userID.(uint)
 
+	exist, err := models.CheckUserExist(userID.(uint))
+	if err != nil {
+		utils.Logger.Error("检查用户是否存在失败: ", err)
+		c.JSON(http.StatusInternalServerError, utils.ErrResponse(utils.ERROR, "检查用户是否存在失败"))
+		return
+	}
+
+	// 校验用户是否存在，防止用户登录token存在，但是表里用户数据被删的情况
+	if !exist {
+		utils.Logger.Error("用户不存在: ", userID.(uint))
+		c.JSON(http.StatusNotFound, utils.ErrResponse(utils.UserNotExist, "用户不存在，请先注册用户！"))
+		return
+	}
+
 	// 写入数据库
 	if err := config.DB.Create(&post).Error; err != nil {
 		utils.Logger.Error("创建文章失败: ", err)
@@ -37,6 +51,7 @@ func CreatePost(c *gin.Context) {
 // GetPosts 获取所有文章
 func GetPosts(c *gin.Context) {
 	var posts []models.Post
+
 	// 查询所有文章（关联用户信息）
 	if err := config.DB.Preload("User").Find(&posts).Error; err != nil {
 		utils.Logger.Error("查询文章列表失败: ", err)
@@ -60,6 +75,7 @@ func GetPost(c *gin.Context) {
 	}
 
 	var post models.Post
+
 	// 查询文章（关联用户+评论）
 	if err := config.DB.Preload("User").Preload("Comments.User").First(&post, id).Error; err != nil {
 		c.JSON(http.StatusNotFound, utils.ErrResponse(utils.PostNotExist, "文章不存在"))
@@ -77,6 +93,7 @@ func UpdatePost(c *gin.Context) {
 	userID, _ := c.Get("userID")
 
 	var post models.Post
+
 	// 查询文章是否存在
 	if err := config.DB.First(&post, id).Error; err != nil {
 		c.JSON(http.StatusNotFound, utils.ErrResponse(utils.PostNotExist, "文章不存在"))
@@ -112,9 +129,15 @@ func DeletePost(c *gin.Context) {
 	id := c.Param("id")
 	utils.Logger.Info("删除文章，id: ", id)
 
-	userID, _ := c.Get("userID")
+	userID, err := c.Get("userID")
+	if !err {
+		utils.Logger.Error("获取用户ID失败: userID 不存在于上下文中")
+		c.JSON(http.StatusUnauthorized, utils.ErrResponse(utils.TokenEmpty, "Token 为空"))
+		return
+	}
 
 	var post models.Post
+
 	// 查询文章是否存在
 	if err := config.DB.First(&post, id).Error; err != nil {
 		c.JSON(http.StatusNotFound, utils.ErrResponse(utils.PostNotExist, "文章不存在"))

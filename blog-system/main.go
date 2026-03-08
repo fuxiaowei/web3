@@ -42,5 +42,8 @@ func main() {
 
 	// 启动服务
 	utils.Logger.Info("服务器启动成功，监听端口: 8080")
-	r.Run(":8080")
+	err := r.Run(":8080")
+	if err != nil {
+		utils.Logger.Error("服务器启动失败: ", err)
+	}
 }
