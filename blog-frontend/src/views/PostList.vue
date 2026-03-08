@@ -1,11 +1,15 @@
 <template>
   <div class="post-list-container">
-    <navbar></navbar>
+    <!--导航栏-->
+    <NavBar/>
     <el-card class="post-list-card" shadow="never">
       <div class="post-list-header">
         <h2>文章列表</h2>
         <el-button type="primary" @click="$router.push('/post/edit')">
-          <el-icon><Plus /></el-icon> 新增文章
+          <el-icon>
+            <Plus/>
+          </el-icon>
+          新增文章
         </el-button>
       </div>
       <el-divider></el-divider>
@@ -31,12 +35,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { ElMessage, ElMessageBox } from 'element-plus' // 替换 ElConfirm 为 ElMessageBox
-import { Plus } from '@element-plus/icons-vue'
+import {ref, onMounted} from 'vue'
+import {useRouter} from 'vue-router'
+import {ElMessage, ElMessageBox} from 'element-plus' // 替换 ElConfirm 为 ElMessageBox
+import {Plus} from '@element-plus/icons-vue'
 import NavBar from '@/components/NavBar.vue'
-import { getPostList, deletePost } from '@/api/post'
+import {getPostList, deletePost} from '@/api/post'
 
 const router = useRouter()
 const postList = ref([])
@@ -84,9 +88,21 @@ const handleDeletePost = async (id) => {
     ElMessage.success('删除成功')
     fetchPostList()
   } catch (error) {
-    if (error !== 'cancel') {
-      ElMessage.error('删除失败')
+    if (error === 'cancel') {
+      return
     }
+    // 优先从后端响应中提取 msg
+    let errMsg = '删除失败'
+    if (error.response?.data?.msg) {
+      // 后端返回了业务信息，如 "无权限删除该文章"
+      errMsg = error.response.data.msg
+    } else if (error.message) {
+      // 网络错误或其他 JS 错误
+      errMsg = error.message
+    }
+
+    // 显示提示信息
+    ElMessage.error(errMsg)
   }
 }
 

@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { createPost, getPostDetail, updatePost } from '@/api/post'
+import {ref, onMounted} from 'vue'
+import {useRoute, useRouter} from 'vue-router'
+import {ElMessage} from 'element-plus'
+import {createPost, getPostDetail, updatePost} from '@/api/post'
 
 const route = useRoute()
 const router = useRouter()
@@ -37,8 +37,8 @@ const postForm = ref({
 
 // 表单验证规则
 const postRules = ref({
-  title: [{ required: true, message: '请输入文章标题', trigger: 'blur' }],
-  content: [{ required: true, message: '请输入文章内容', trigger: 'blur' }]
+  title: [{required: true, message: '请输入文章标题', trigger: 'blur'}],
+  content: [{required: true, message: '请输入文章内容', trigger: 'blur'}]
 })
 
 // 获取文章详情（编辑模式）
@@ -69,8 +69,18 @@ const handleSubmit = async () => {
     }
     router.push('/posts')
   } catch (error) {
-    console.error('提交失败：', error)
-    ElMessage.error('提交失败')
+    // 优先从后端响应中提取 msg
+    let errMsg = '提交失败'
+    if (error.response?.data?.msg) {
+      // 后端返回了业务信息，如 "无权限删除该文章"
+      errMsg = error.response.data.msg
+    } else if (error.message) {
+      // 网络错误或其他 JS 错误
+      errMsg = error.message
+    }
+
+    // 显示提示信息
+    ElMessage.error(errMsg)
   }
 }
 

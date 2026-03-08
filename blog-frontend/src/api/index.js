@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { getToken } from '@/utils/auth'
-import { ElMessage } from 'element-plus'
-import { useUserStore } from '@/store'
+import {getToken} from '@/utils/auth'
+import {ElMessage} from 'element-plus'
+import {useUserStore} from '@/store'
 
 // 创建Axios实例
 const service = axios.create({
@@ -24,26 +24,29 @@ service.interceptors.request.use(
     }
 )
 
-// 响应拦截器：统一处理错误
+// 响应拦截器：统一处理错误（核心修改）
 service.interceptors.response.use(
     (response) => {
         const res = response.data
         // 后端返回非200码，视为错误
         if (res.code !== 200) {
-            ElMessage.error(res.msg || '请求失败')
+            // 这里只抛错，不弹提示（交给组件处理）
             return Promise.reject(res)
         }
         return res
     },
     (error) => {
-        // Token过期/未登录
+        // Token过期/未登录：仍全局处理（必须的全局逻辑）
         if (error.response?.status === 401) {
             const userStore = useUserStore()
             userStore.logout()
             ElMessage.error('登录已过期，请重新登录')
             window.location.href = '/login'
-        } else {
-            ElMessage.error(error.message || '服务器错误')
+        }
+        // 其他错误（如403/404/500）：只抛错，不弹包含状态码的提示
+        else {
+            // 移除原有弹提示的代码，仅抛错
+            // ElMessage.error(error.message || '服务器错误')
         }
         return Promise.reject(error)
     }
