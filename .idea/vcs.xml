@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gin-vue-admin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/go-gin-api" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/golang-learning" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/solidity_lesson" vcs="Git" />
+  </component>
+</project>
