@@ -1,0 +1,21 @@
+### 合约基础
+
+1. https://github.com/AmazingAng/WTF-Solidity/tree/main/Topics/Tools/TOOL01_Remix	（remix使用方法）
+
+2. 看下社区任务1 任务2的视频课程  https://github.com/MetaNodeAcademy/solidity_lesson/blob/main/README.md  （学到8.2）
+
+3. https://github.com/WTFAcademy/WTF-Solidity?tab=readme-ov-file#%E8%BF%9B%E9%98%B6 （1-45讲看完）
+
+4. 开始做作业任务1 任务2
+
+   https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/contract/homework01.md
+
+   https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/contract/homework02.md
+
+5. 搞清楚以下几个问题：
+
+   a：ERC20/ERC721合约中的transferFrom接口如何使用
+
+   b：ERC721中的授权接口跟ERC20有何不同
+
+   c：ERC721合约中的safeTransfer等带safe前缀的接口提供了什么安全措施
