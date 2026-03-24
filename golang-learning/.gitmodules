@@ -1,0 +1,3 @@
+[submodule "lesson-04/examples/11-erc20-foundry/lib/openzeppelin-contracts"]
+	path = lesson-04/examples/11-erc20-foundry/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
