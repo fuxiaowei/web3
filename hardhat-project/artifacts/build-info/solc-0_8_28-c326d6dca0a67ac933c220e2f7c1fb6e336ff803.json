@@ -1,0 +1,35 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-c326d6dca0a67ac933c220e2f7c1fb6e336ff803",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/IntegerToRomanNumeral.sol": "project/contracts/IntegerToRomanNumeral.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/IntegerToRomanNumeral.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\r\npragma solidity ^0.8.10;\r\n\r\ncontract IntegerToRomanNumeral {\r\n    // 核心：从大到小排列所有可能的数值 + 对应罗马字符（包含6种减法组合）\r\n    uint[] private values = [\r\n        1000,\r\n        900,\r\n        500,\r\n        400,\r\n        100,\r\n        90,\r\n        50,\r\n        40,\r\n        10,\r\n        9,\r\n        5,\r\n        4,\r\n        1\r\n    ];\r\n\r\n    string[] private symbols = [\r\n        \"M\",\r\n        \"CM\",\r\n        \"D\",\r\n        \"CD\",\r\n        \"C\",\r\n        \"XC\",\r\n        \"L\",\r\n        \"XL\",\r\n        \"X\",\r\n        \"IX\",\r\n        \"V\",\r\n        \"IV\",\r\n        \"I\"\r\n    ];\r\n\r\n    // 主函数：整数转罗马数字\r\n    function intToRoman(uint num) public view returns (string memory) {\r\n        // 复制数值，避免修改原始入参\r\n        uint n = num;\r\n        // 动态拼接结果\r\n        string memory roman = \"\";\r\n\r\n        // 遍历所有数值组合\r\n        for (uint i = 0; i < values.length; i++) {\r\n            // 当前数值能减多少次\r\n            while (n >= values[i]) {\r\n                roman = string.concat(roman, symbols[i]);\r\n                n -= values[i];\r\n            }\r\n            // 提前退出优化\r\n            if (n == 0) break;\r\n        }\r\n\r\n        return roman;\r\n    }\r\n}\r\n\r\n/*\r\n * =============================================================================\r\n * 12. 整数转罗马数字（难度：中等）\r\n * =============================================================================\r\n *\r\n * 【任务】\r\n *   给定整数 num，将其转为罗马数字字符串。\r\n *\r\n * 【符号与数值】\r\n *   字符    数值\r\n *   ----    ----\r\n *   I        1\r\n *   V        5\r\n *   X       10\r\n *   L       50\r\n *   C      100\r\n *   D      500\r\n *   M     1000\r\n *\r\n * 【转换规则（按数位从高到低）】\r\n *   1. 若当前剩余数值的「这一位」不是 4 或 9：\r\n *      选出能减去的最大符号，接到结果末尾，减去该符号值，对剩余部分继续转换。\r\n *   2. 若这一位是 4 或 9：必须用减法形式（小数在大数左侧），且只能用下列六种：\r\n *        4 → IV    9 → IX    40 → XL    90 → XC    400 → CD    900 → CM\r\n *      例如：4 = V−I 写作 IV；9 = X−I 写作 IX。\r\n *   3. 仅 I、X、C、M（10 的幂）最多连续出现 3 次；V、L、D 不能连续重复。\r\n *      若同一符号需写 4 次，应改为减法形式（如 40 用 XL，不用 XXXX）。\r\n *   4. 注意：49 写作 XLIX（按位处理），不能写成 IL（非法减法）。\r\n *\r\n * 【示例】\r\n *   示例 1  输入 num = 3749   输出 \"MMMDCCXLIX\"\r\n *            3000 = MMM；700 = DCC；40 = XL；9 = IX\r\n *\r\n *   示例 2  输入 num = 58     输出 \"LVIII\"\r\n *            50 = L；8 = VIII\r\n *\r\n *   示例 3  输入 num = 1994   输出 \"MCMXCIV\"\r\n *            1000 = M；900 = CM；90 = XC；4 = IV\r\n *\r\n * 【数据范围】\r\n *   1 ≤ num ≤ 3999\r\n * =============================================================================\r\n */"
+      }
+    }
+  }
+}
