@@ -1,6 +1,7 @@
-require("@nomicfoundation/hardhat-ethers");
+import hardhatEthersPlugin from "@nomicfoundation/hardhat-ethers";
+import { defineConfig } from "hardhat/config";
 
-/** @type import('hardhat/config').HardhatUserConfig */
-module.exports = {
+export default defineConfig({
+  plugins: [hardhatEthersPlugin],
   solidity: "0.8.28",
-};
+});
