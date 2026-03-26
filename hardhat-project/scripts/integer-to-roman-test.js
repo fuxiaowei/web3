@@ -17,9 +17,7 @@ async function main() {
         const testCases = [3749, 58, 1994, 1, 4, 9, 58, 400, 900];
 
         for (const num of testCases) {
-            const result = awai
-
-            t contract.intToRoman(num);
+            const result = await contract.intToRoman(num);
             console.log(`数字 ${num} → 罗马数字: ${result}`);
         }
     } finally {
