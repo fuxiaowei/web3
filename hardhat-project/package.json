@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:begging:sepolia": "hardhat run scripts/deploy-begging-contract-sepolia.js --network sepolia"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^4.0.6",
+    "dotenv": "^16.4.7",
     "ethers": "^6.16.0"
   },
   "type": "module"
