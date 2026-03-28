@@ -14,8 +14,109 @@
 
 5. 搞清楚以下几个问题：
 
-   a：ERC20/ERC721合约中的transferFrom接口如何使用
+   a. ERC20 / ERC721 合约中的 `transferFrom` 接口如何使用  
+   b. ERC721 中的授权接口跟 ERC20 有何不同  
+   c. ERC721 合约中带 `safe` 前缀的接口（如 `safeTransferFrom`）提供了什么安全措施  
 
-   b：ERC721中的授权接口跟ERC20有何不同
+   ---------------------------------------------------------------------------
+   参考说明（与 a / b / c 对应）
+   ---------------------------------------------------------------------------
 
-   c：ERC721合约中的safeTransfer等带safe前缀的接口提供了什么安全措施
+   【a】ERC20 / ERC721 的 transferFrom 如何使用
+   ---------------------------------------------------------------------------
+
+   1) ERC20 的 transferFrom
+
+   - 作用：被授权的第三方（合约或钱包）可代持有者把代币从 `sender` 转到 `recipient`。
+   - 前提：
+     · 调用者已被 `approve`（或 `increaseAllowance` 等）授权足够额度；
+     · `sender` 余额 ≥ 本次 `amount`。
+   - 函数签名：
+
+```solidity
+function transferFrom(address sender, address recipient, uint256 amount) public returns (bool);
+```
+
+   - 典型流程：
+
+```solidity
+// 1. 持有者授权给第三方（如合约 A）
+token.approve(address(contractA), 1000);
+
+// 2. 第三方（合约 A）调用 transferFrom
+token.transferFrom(msg.sender, address(recipient), 500);
+```
+
+   2) ERC721 的 transferFrom
+
+   - 作用：转移指定 `tokenId` 对应 NFT 的所有权。
+   - 前提：
+     · 调用者是所有者、已获 `approve` 的地址，或已 `setApprovalForAll` 的 operator；
+     · `tokenId` 存在且有效。
+   - 函数签名：
+
+```solidity
+function transferFrom(address from, address to, uint256 tokenId) public;
+```
+
+   - 典型流程：
+
+```solidity
+// 1. 所有者授权给第三方（如合约 B）
+nft.approve(address(contractB), 1);
+
+// 2. 第三方（合约 B）调用 transferFrom
+nft.transferFrom(owner, newOwner, 1);
+```
+
+   【b】ERC721 授权与 ERC20 授权的差异
+   ---------------------------------------------------------------------------
+
+   ERC20
+   - `approve(address spender, uint256 amount)`：按「金额」授权，`spender` 最多可转 `amount`。
+   - 风险：授权额过大时，可能被多次 `transferFrom` 耗尽余额。
+   - 常见增强：`ERC20Permit`（链下签名授权，减少链上 `approve`）。
+
+   ERC721
+   - `approve(address approved, uint256 tokenId)`：按「单个 tokenId」授权。
+   - `setApprovalForAll(address operator, bool approved)`：授权/撤销 operator 转移当前用户名下全部 NFT（类批量授权，需谨慎）。
+
+   小结
+   - ERC20 授权的是「数量」；ERC721 是「单枚 NFT」或「全部 NFT（operator）」。
+   - ERC721 的 per-token `approve` 粒度是资产级；ERC20 的 `approve` 是数值级。
+
+   【c】safeTransferFrom 等「safe」前缀的安全含义
+   ---------------------------------------------------------------------------
+
+   1) 两种常见重载
+
+```solidity
+function safeTransferFrom(address from, address to, uint256 tokenId) public;
+
+function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public;
+```
+
+   2) 核心：对接收方的兼容性检查（Receiver Check）
+
+   - 背景：若 `to` 是合约且未正确实现接收逻辑，NFT 可能卡在合约中无法再转出。
+   - 行为概要：
+     · `to` 为 EOA：照常转移；
+     · `to` 为合约：会调用其 `onERC721Received`；若返回值不是约定魔数
+       `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`，则整笔交易 revert。
+   - 附带效果：降低误转到「不支持 ERC721 接收」的合约的概率；接收合约可在回调里做校验或记录。
+
+   3) 与 `transferFrom` 对比
+
+   - `transferFrom`：不检查接收方能否处理 NFT，误转合约可能导致资产不可用。
+   - `safeTransferFrom`：对合约接收方做 ERC721Receiver 检查，与合约交互时更稳妥。
+
+   4) 对照表
+
+   | 特性       | ERC20 transferFrom     | ERC721 transferFrom   | ERC721 safeTransferFrom   |
+   |------------|------------------------|-----------------------|---------------------------|
+   | 授权方式   | approve(spender, amt)  | approve(addr, tokenId)| 同 transferFrom          |
+   | 转移对象   | 同质化（金额）         | 非同质化（单 ID）     | 同 transferFrom          |
+   | 接收方检查 | 无                     | 无                    | 有（合约须正确实现回调）  |
+   | 安全性     | 依赖场景与额度控制     | 依赖接收方地址正确    | 较高（防合约侧丢 NFT）    |
+   | 典型场景   | 转账、DEX              | 点对点 NFT 转移       | 市场、与合约交互          |
+
