@@ -1,0 +1,59 @@
+### 合约高阶
+
+1. 继续学习完WTF剩余的章节（操作码、工具章节除外）
+
+2. 社区任务3相关的章节学习完，包含视频以及资料
+
+   https://github.com/MetaNodeAcademy/solidity_lesson/blob/main/README.md	（8.2以后）
+
+3. https://github.com/MetaNodeAcademy/Base2-Solidity/tree/main/3-solidity-coding/3.4%E8%B7%A8%E9%93%BE（跨链）
+
+4. 掌握可升级合约原理
+
+   https://github.com/MetaNodeAcademy/Base2-Solidity/tree/main/3-solidity-coding/3.2%E5%8F%AF%E5%8D%87%E7%BA%A7%E5%90%88%E7%BA%A6（文档）
+
+   https://meeting.tencent.com/wework/cloud-record/share?id=8acee3d0-2fc2-48f3-a702-b33e9906bd64&record_type=2&hide_more_btn=true&from=qywx（视频）
+
+   访问密码：0ZEX
+
+
+
+   a：delegatecall 跟 call 的区别是什么
+
+   b：可升级合约的执行流程是什么（user -> proxy -> implementation）
+
+   c：代理合约上本身是有存储的，怎么避免跟逻辑合约上的存储产生冲突
+
+   d： 逻辑合约升级的存储冲突问题
+
+   e： 可以在逻辑合约的构造函数中初始化变量吗？为什么
+
+
+
+   阅读下面两种代理的源码，理解代理合约的业务逻辑以及实现方式
+
+   UUPS代理模式会部署下面的代理合约：
+
+   https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/ERC1967/ERC1967Proxy.sol
+
+   透明代理模式会部署下面的代理合约：
+
+   https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/TransparentUpgradeableProxy.sol
+
+5. 完成任务3的作业，可以参考github资料中的课堂代码
+
+   https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/contract/homework03.md
+
+
+
+   任务3尽量使用hardhat V3开发
+
+   hardhat V3导读：https://learnblockchain.cn/article/21728
+
+   hardhat V3文档：https://hardhat.org/docs/getting-started
+
+
+
+   任务3参考代码
+
+   https://github.com/lc3091/hardhatV3Nft.git
