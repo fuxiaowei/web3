@@ -1,0 +1,769 @@
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/admin.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/admin.d.ts
+index 806da73..2df2a8f 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/admin.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/admin.d.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { Contract, Signer } from 'ethers';
+ import { EthersDeployOptions } from './utils';
+ type TransferProxyAdminOwnershipOptions = {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/client.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/client.d.ts
+index b79e3a5..0023aa9 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/client.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/client.d.ts
+@@ -1,6 +1,6 @@
+ import { DeployClient } from '@openzeppelin/defender-sdk-deploy-client';
+ import { NetworkClient } from '@openzeppelin/defender-sdk-network-client';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ export declare function getNetworkClient(hre: HardhatRuntimeEnvironment): NetworkClient;
+ export declare function getDeployClient(hre: HardhatRuntimeEnvironment): DeployClient;
+ //# sourceMappingURL=client.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/deploy.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/deploy.d.ts
+index d6f16c8..585d8db 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/deploy.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/deploy.d.ts
+@@ -1,5 +1,5 @@
+ import type { ContractFactory } from 'ethers';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { DefenderDeployOptions, UpgradeOptions, EthersDeployOptions, DefenderDeployment } from '../utils';
+ export declare function defenderDeploy(hre: HardhatRuntimeEnvironment, factory: ContractFactory, opts: UpgradeOptions & EthersDeployOptions & DefenderDeployOptions, ...args: unknown[]): Promise<DefenderDeployment>;
+ //# sourceMappingURL=deploy.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/get-approval-process.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/get-approval-process.d.ts
+index e83cf11..ca9a7f4 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/get-approval-process.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/get-approval-process.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { ApprovalProcessResponse } from '@openzeppelin/defender-sdk-deploy-client';
+ export interface ApprovalProcess {
+     approvalProcessId: string;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/propose-upgrade-with-approval.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/propose-upgrade-with-approval.d.ts
+index 9ec9c7f..13b10fd 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/propose-upgrade-with-approval.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/propose-upgrade-with-approval.d.ts
+@@ -1,6 +1,6 @@
+ import '../type-extensions';
+ import { ContractFactory, ethers } from 'ethers';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { DefenderDeployOptions, UpgradeOptions } from '../utils';
+ export interface UpgradeProposalResponse {
+     proposalId: string;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/utils.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/utils.d.ts
+index 37601d9..14aaa3a 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/utils.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/defender/utils.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { RemoteDeployment, DeployOpts } from '@openzeppelin/upgrades-core';
+ import { Network } from '@openzeppelin/defender-sdk-base-client';
+ import { TxOverrides } from '@openzeppelin/defender-sdk-deploy-client';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon-proxy.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon-proxy.d.ts
+index 08cb62d..8e5472e 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon-proxy.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon-proxy.d.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { ContractFactory } from 'ethers';
+ import { DeployBeaconProxyOptions, ContractAddressOrInstance } from './utils';
+ import { ContractTypeOfFactory } from './type-extensions';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon.d.ts
+index 43649c5..858c110 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-beacon.d.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, Contract } from 'ethers';
+ import { DeployBeaconOptions } from './utils';
+ export interface DeployBeaconFunction {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-contract.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-contract.d.ts
+index 9dd50d8..e1867a3 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-contract.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-contract.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ import { DeployContractOptions } from './utils';
+ import { ContractTypeOfFactory } from './type-extensions';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-implementation.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-implementation.d.ts
+index 156348e..9ebbaca 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-implementation.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-implementation.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, ethers } from 'ethers';
+ import { DeployImplementationOptions } from './utils';
+ export type DeployImplementationFunction = (ImplFactory: ContractFactory, opts?: DeployImplementationOptions) => Promise<DeployImplementationResponse>;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-proxy.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-proxy.d.ts
+index d5907b5..3ef5c02 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-proxy.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/deploy-proxy.d.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ import { DeployProxyOptions } from './utils';
+ import { ContractTypeOfFactory } from './type-extensions';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/force-import.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/force-import.d.ts
+index 4866ef0..5f1f1d2 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/force-import.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/force-import.d.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, Contract } from 'ethers';
+ import { ForceImportOptions } from './utils';
+ export interface ForceImportFunction {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/index.js b/node_modules/@openzeppelin/hardhat-upgrades/dist/index.js
+index 4456c59..eb43f6a 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/index.js
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/index.js
+@@ -4,10 +4,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ require("@nomicfoundation/hardhat-ethers");
+ require("./type-extensions");
+ const config_1 = require("hardhat/config");
+-const task_names_1 = require("hardhat/builtin-tasks/task-names");
++// Hardhat 3 不再支持 subtask，暂时移除
++// const subtask = config_1.subtask;
++// Hardhat 3 不再导出 builtin-tasks/task-names，直接使用字符串常量
++const TASK_COMPILE_SOLIDITY = 'compile:solidity';
++const TASK_COMPILE_SOLIDITY_COMPILE = 'compile:solidity:compile';
+ const plugins_1 = require("hardhat/plugins");
+ const upgrades_core_1 = require("@openzeppelin/upgrades-core");
+-(0, config_1.subtask)(task_names_1.TASK_COMPILE_SOLIDITY, async (args, hre, runSuper) => {
++// Hardhat 3 不再支持 subtask API，暂时注释掉
++/*
++(0, config_1.subtask)(TASK_COMPILE_SOLIDITY, async (args, hre, runSuper) => {
+     const { readValidations, ValidationsCacheOutdated, ValidationsCacheNotFound } = await import('./utils/validations.js');
+     try {
+         await readValidations(hre);
+@@ -22,7 +28,7 @@ const upgrades_core_1 = require("@openzeppelin/upgrades-core");
+     }
+     return runSuper(args);
+ });
+-(0, config_1.subtask)(task_names_1.TASK_COMPILE_SOLIDITY_COMPILE, async (args, hre, runSuper) => {
++(0, config_1.subtask)(TASK_COMPILE_SOLIDITY_COMPILE, async (args, hre, runSuper) => {
+     const { isNamespaceSupported, validate, solcInputOutputDecoder, makeNamespacedInput, trySanitizeNatSpec } = await import('@openzeppelin/upgrades-core');
+     const { writeValidations } = await import('./utils/validations.js');
+     // TODO: patch input
+@@ -77,6 +83,7 @@ const upgrades_core_1 = require("@openzeppelin/upgrades-core");
+     }
+     return { output, solcBuild };
+ });
++*/
+ function getNamespacedCompileErrors(namespacedOutput) {
+     const errors = [];
+     if (namespacedOutput.errors !== undefined) {
+@@ -88,6 +95,8 @@ function getNamespacedCompileErrors(namespacedOutput) {
+     }
+     return errors;
+ }
++// Hardhat 3 不再支持 extendEnvironment，暂时注释掉
++/*
+ (0, config_1.extendEnvironment)(hre => {
+     hre.upgrades = (0, plugins_1.lazyObject)(() => {
+         return makeUpgradesFunctions(hre);
+@@ -97,6 +106,7 @@ function getNamespacedCompileErrors(namespacedOutput) {
+         return makeDefenderFunctions(hre);
+     });
+ });
++*/
+ function warnOnHardhatDefender() {
+     if (tryRequire('@openzeppelin/hardhat-defender', true)) {
+         const { logWarning } = require('@openzeppelin/upgrades-core');
+@@ -106,6 +116,8 @@ function warnOnHardhatDefender() {
+         ]);
+     }
+ }
++// Hardhat 3 不再支持 extendConfig，暂时注释掉
++/*
+ (0, config_1.extendConfig)((config) => {
+     var _a, _b;
+     // Accumulate references to all the compiler settings, including overrides
+@@ -128,12 +140,16 @@ function warnOnHardhatDefender() {
+         }
+     }
+ });
++*/
++// Hardhat 3 不再支持 subtask API，暂时注释掉
++/*
+ if (tryRequire('@nomicfoundation/hardhat-verify')) {
+     (0, config_1.subtask)('verify:etherscan').setAction(async (args, hre, runSuper) => {
+         const { verify } = await import('./verify-proxy.js');
+         return await verify(args, hre, runSuper);
+     });
+ }
++*/
+ function makeFunctions(hre, defender) {
+     const { silenceWarnings, getAdminAddress, getImplementationAddress, getBeaconAddress, getImplementationAddressFromBeacon, } = require('@openzeppelin/upgrades-core');
+     const { makeDeployProxy } = require('./deploy-proxy');
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/prepare-upgrade.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/prepare-upgrade.d.ts
+index d155bf9..feb2417 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/prepare-upgrade.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/prepare-upgrade.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ import { ContractAddressOrInstance, PrepareUpgradeOptions } from './utils';
+ import { DeployImplementationResponse } from './deploy-implementation';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.d.ts
+index 58741be..92cbb36 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.d.ts
+@@ -1,9 +1,9 @@
+-import 'hardhat/types/runtime';
++import 'hardhat/types/hre';
+ import 'hardhat/types/config';
+ import type { HardhatUpgrades, DefenderHardhatUpgrades } from '.';
+ import { ContractFactory } from 'ethers';
+ export type ContractTypeOfFactory<F extends ContractFactory> = ReturnType<F['attach']> & ReturnType<F['deploy']>;
+-declare module 'hardhat/types/runtime' {
++declare module 'hardhat/types/hre' {
+     interface HardhatRuntimeEnvironment {
+         upgrades: HardhatUpgrades;
+         defender: DefenderHardhatUpgrades;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.js b/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.js
+index 23d9ce1..8fa5ca4 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.js
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/type-extensions.js
+@@ -1,5 +1,5 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+-require("hardhat/types/runtime");
++require("hardhat/types/hre");
+ require("hardhat/types/config");
+ //# sourceMappingURL=type-extensions.js.map
+\ No newline at end of file
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-beacon.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-beacon.d.ts
+index 3899764..8d2175e 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-beacon.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-beacon.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, Contract } from 'ethers';
+ import { ContractAddressOrInstance, UpgradeBeaconOptions } from './utils';
+ export type UpgradeBeaconFunction = (beacon: ContractAddressOrInstance, ImplFactory: ContractFactory, opts?: UpgradeBeaconOptions) => Promise<Contract>;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-proxy.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-proxy.d.ts
+index 9da81d6..8c47372 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-proxy.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/upgrade-proxy.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ import { UpgradeProxyOptions, ContractAddressOrInstance } from './utils';
+ import { ContractTypeOfFactory } from './type-extensions';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/attach-abi.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/attach-abi.d.ts
+index e167e24..22e3732 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/attach-abi.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/attach-abi.d.ts
+@@ -1,5 +1,5 @@
+ import { Contract, Signer } from 'ethers';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ export declare function attachITransparentUpgradeableProxyV5(hre: HardhatRuntimeEnvironment, address: string, signer?: Signer): Promise<Contract>;
+ export declare function attachITransparentUpgradeableProxyV4(hre: HardhatRuntimeEnvironment, address: string, signer?: Signer): Promise<Contract>;
+ export declare function attachProxyAdminV5(hre: HardhatRuntimeEnvironment, address: string, signer?: Signer): Promise<Contract>;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/contract-instance.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/contract-instance.d.ts
+index 40b39ed..ef39f4d 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/contract-instance.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/contract-instance.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ import { DeployTransaction, DefenderDeploy } from '.';
+ import { Deployment, RemoteDeploymentId, DeployOpts } from '@openzeppelin/upgrades-core';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy-impl.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy-impl.d.ts
+index 7f69c8a..a5f05f3 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy-impl.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy-impl.d.ts
+@@ -1,6 +1,6 @@
+ import { StorageLayout, ValidationDataCurrent, ValidationOptions, Version } from '@openzeppelin/upgrades-core';
+ import type { ContractFactory, ethers } from 'ethers';
+-import type { EthereumProvider, HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { EthereumProvider, HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { StandaloneOptions, UpgradeOptions } from './options';
+ export interface DeployedImpl {
+     impl: string;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy.d.ts
+index da66d9a..180320d 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/deploy.d.ts
+@@ -1,6 +1,6 @@
+ import type { Deployment, RemoteDeploymentId } from '@openzeppelin/upgrades-core';
+ import type { ethers, ContractFactory } from 'ethers';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { EthersDeployOptions, DefenderDeployOptions, UpgradeOptions } from './options';
+ export interface DeployTransaction {
+     deployTransaction?: ethers.TransactionResponse;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/etherscan-api.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/etherscan-api.d.ts
+index 9cb1f31..3452a53 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/etherscan-api.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/etherscan-api.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { Etherscan } from '@nomicfoundation/hardhat-verify/etherscan';
+ /**
+  * Call the configured Etherscan API with the given parameters.
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/factories.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/factories.d.ts
+index bb866ed..7414a07 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/factories.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/factories.d.ts
+@@ -1,5 +1,5 @@
+ import { ContractFactory, Signer } from 'ethers';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ export declare function getProxyFactory(hre: HardhatRuntimeEnvironment, signer?: Signer): Promise<ContractFactory>;
+ export declare function getTransparentUpgradeableProxyFactory(hre: HardhatRuntimeEnvironment, signer?: Signer): Promise<ContractFactory>;
+ export declare function getBeaconProxyFactory(hre: HardhatRuntimeEnvironment, signer?: Signer): Promise<ContractFactory>;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/simulate-deploy.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/simulate-deploy.d.ts
+index fdae097..5ae2790 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/simulate-deploy.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/simulate-deploy.d.ts
+@@ -1,5 +1,5 @@
+ import type { ContractFactory } from 'ethers';
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { UpgradeOptions } from './options';
+ export declare function simulateDeployImpl(hre: HardhatRuntimeEnvironment, ImplFactory: ContractFactory, opts: UpgradeOptions, implAddress: string): Promise<void>;
+ //# sourceMappingURL=simulate-deploy.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/validations.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/validations.d.ts
+index 428dfc7..2b583ee 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/validations.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/utils/validations.d.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { ValidationDataCurrent, ValidationRunData } from '@openzeppelin/upgrades-core';
+ export declare function writeValidations(hre: HardhatRuntimeEnvironment, newRunData: ValidationRunData): Promise<void>;
+ export declare function readValidations(hre: HardhatRuntimeEnvironment, acquireLock?: boolean): Promise<ValidationDataCurrent>;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-implementation.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-implementation.d.ts
+index bfc9a55..33779aa 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-implementation.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-implementation.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ import { ValidateImplementationOptions } from './utils';
+ export type ValidateImplementationFunction = (ImplFactory: ContractFactory, opts?: ValidateImplementationOptions) => Promise<void>;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-upgrade.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-upgrade.d.ts
+index cb00b38..cd756fe 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-upgrade.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/validate-upgrade.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { ContractFactory } from 'ethers';
+ import { ContractAddressOrInstance } from './utils';
+ import { ValidationOptions } from '@openzeppelin/upgrades-core';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.d.ts b/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.d.ts
+index 7d01c37..2528eb6 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.d.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.d.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment, RunSuperFunction } from 'hardhat/types';
++import { HardhatRuntimeEnvironment, RunSuperFunction } from 'hardhat/types/hre';
+ /**
+  * Overrides hardhat-verify's verify:etherscan subtask to fully verify a proxy or beacon.
+  *
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/admin.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/admin.ts
+index 6b8abeb..acf92ae 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/admin.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/admin.ts
+@@ -1,5 +1,5 @@
+ import chalk from 'chalk';
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { Manifest, getAdminAddress } from '@openzeppelin/upgrades-core';
+ import { Contract, Signer } from 'ethers';
+ import { EthersDeployOptions, attachProxyAdminV4 } from './utils';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/client.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/client.ts
+index d6feb1b..04d7a72 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/client.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/client.ts
+@@ -1,6 +1,6 @@
+ import { DeployClient } from '@openzeppelin/defender-sdk-deploy-client';
+ import { NetworkClient } from '@openzeppelin/defender-sdk-network-client';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { getDefenderApiKey } from './utils';
+ 
+ export function getNetworkClient(hre: HardhatRuntimeEnvironment): NetworkClient {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/deploy.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/deploy.ts
+index fb13980..987fe0f 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/deploy.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/deploy.ts
+@@ -1,5 +1,5 @@
+ import type { ethers, ContractFactory } from 'ethers';
+-import { CompilerInput, CompilerOutputContract, HardhatRuntimeEnvironment } from 'hardhat/types';
++import { CompilerInput, CompilerOutputContract, HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ 
+ import { parseFullyQualifiedName } from 'hardhat/utils/contract-names';
+ 
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/get-approval-process.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/get-approval-process.ts
+index 70a08a5..55c9201 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/get-approval-process.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/get-approval-process.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ 
+ import { getNetwork } from './utils';
+ import { getDeployClient } from './client';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/propose-upgrade-with-approval.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/propose-upgrade-with-approval.ts
+index df5475b..29a6228 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/propose-upgrade-with-approval.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/propose-upgrade-with-approval.ts
+@@ -6,7 +6,7 @@ import {
+   isTransparentProxy,
+ } from '@openzeppelin/upgrades-core';
+ import { ContractFactory, ethers } from 'ethers';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { DefenderDeployOptions, UpgradeOptions } from '../utils';
+ import { getNetwork, enableDefender } from './utils';
+ import { deployImplForUpgrade } from '../prepare-upgrade';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/utils.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/utils.ts
+index 37d3002..e42a5f2 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/defender/utils.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/defender/utils.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import {
+   getChainId,
+   hasCode,
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon-proxy.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon-proxy.ts
+index 9755adf..b319517 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon-proxy.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon-proxy.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { ContractFactory } from 'ethers';
+ 
+ import {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon.ts
+index be0b327..a25f32a 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-beacon.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, Contract } from 'ethers';
+ 
+ import { Deployment } from '@openzeppelin/upgrades-core';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-contract.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-contract.ts
+index 93c3a74..1d1cce2 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-contract.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-contract.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ 
+ import { deploy, DeployContractOptions, DeployTransaction, EthersOrDefenderDeployment } from './utils';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-implementation.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-implementation.ts
+index e29adb0..fb38407 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-implementation.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-implementation.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, ethers } from 'ethers';
+ 
+ import { DeployImplementationOptions } from './utils';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-proxy.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-proxy.ts
+index b912102..9378039 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-proxy.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/deploy-proxy.ts
+@@ -1,4 +1,4 @@
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ 
+ import {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/force-import.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/force-import.ts
+index 879fbf5..090618e 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/force-import.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/force-import.ts
+@@ -1,4 +1,4 @@
+-import type { EthereumProvider, HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { EthereumProvider, HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, Contract } from 'ethers';
+ 
+ import {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/index.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/index.ts
+index 21bb424..fb392b2 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/index.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/index.ts
+@@ -2,10 +2,14 @@
+ 
+ import '@nomicfoundation/hardhat-ethers';
+ import './type-extensions';
+-import { subtask, extendEnvironment, extendConfig } from 'hardhat/config';
+-import { TASK_COMPILE_SOLIDITY, TASK_COMPILE_SOLIDITY_COMPILE } from 'hardhat/builtin-tasks/task-names';
++// Hardhat 3 不再支持 subtask、extendEnvironment、extendConfig，暂时移除
++// import { subtask, extendEnvironment, extendConfig } from 'hardhat/config';
++// import { extendEnvironment, extendConfig } from 'hardhat/config';
++// Hardhat 3 不再导出 builtin-tasks/task-names，直接使用字符串常量
++const TASK_COMPILE_SOLIDITY = 'compile:solidity';
++const TASK_COMPILE_SOLIDITY_COMPILE = 'compile:solidity:compile';
+ import { lazyObject } from 'hardhat/plugins';
+-import { HardhatConfig, HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatConfig, HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { assertUnreachable, type silenceWarnings, type SolcInput, type SolcOutput } from '@openzeppelin/upgrades-core';
+ import type { DeployFunction } from './deploy-proxy';
+ import type { PrepareUpgradeFunction } from './prepare-upgrade';
+@@ -68,6 +72,10 @@ interface RunCompilerArgs {
+   quiet: boolean;
+ }
+ 
++// Hardhat 3 不再支持 subtask API，暂时注释掉
++// 这些 subtask 主要用于验证合约，不影响基本功能
++// TODO: 等待 @openzeppelin/hardhat-upgrades 支持 Hardhat 3
++/*
+ subtask(TASK_COMPILE_SOLIDITY, async (args: { force: boolean }, hre, runSuper) => {
+   const { readValidations, ValidationsCacheOutdated, ValidationsCacheNotFound } = await import(
+     './utils/validations.js'
+@@ -151,6 +159,7 @@ subtask(TASK_COMPILE_SOLIDITY_COMPILE, async (args: RunCompilerArgs, hre, runSup
+ 
+   return { output, solcBuild };
+ });
++*/
+ 
+ function getNamespacedCompileErrors(namespacedOutput: SolcOutput) {
+   const errors = [];
+@@ -164,6 +173,9 @@ function getNamespacedCompileErrors(namespacedOutput: SolcOutput) {
+   return errors;
+ }
+ 
++// Hardhat 3 不再支持 extendEnvironment，暂时注释掉
++// 这会导致 hre.upgrades 不可用，需要等待官方更新或手动实现
++/*
+ extendEnvironment(hre => {
+   hre.upgrades = lazyObject((): HardhatUpgrades => {
+     return makeUpgradesFunctions(hre);
+@@ -175,6 +187,7 @@ extendEnvironment(hre => {
+     return makeDefenderFunctions(hre);
+   });
+ });
++*/
+ 
+ function warnOnHardhatDefender() {
+   if (tryRequire('@openzeppelin/hardhat-defender', true)) {
+@@ -186,6 +199,9 @@ function warnOnHardhatDefender() {
+   }
+ }
+ 
++// Hardhat 3 不再支持 extendConfig，暂时注释掉
++// 需要手动在 hardhat.config.ts 中配置 storageLayout
++/*
+ extendConfig((config: HardhatConfig) => {
+   // Accumulate references to all the compiler settings, including overrides
+   const settings = [];
+@@ -209,6 +225,7 @@ extendConfig((config: HardhatConfig) => {
+     }
+   }
+ });
++*/
+ 
+ if (tryRequire('@nomicfoundation/hardhat-verify')) {
+   subtask('verify:etherscan').setAction(async (args, hre, runSuper) => {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/prepare-upgrade.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/prepare-upgrade.ts
+index b1ef1fd..ac80901 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/prepare-upgrade.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/prepare-upgrade.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ 
+ import {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/type-extensions.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/type-extensions.ts
+index 76b72b4..392e38e 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/type-extensions.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/type-extensions.ts
+@@ -1,4 +1,4 @@
+-import 'hardhat/types/runtime';
++import 'hardhat/types/hre';
+ import 'hardhat/types/config';
+ 
+ import type { HardhatUpgrades, DefenderHardhatUpgrades } from '.';
+@@ -6,7 +6,7 @@ import { ContractFactory } from 'ethers';
+ 
+ export type ContractTypeOfFactory<F extends ContractFactory> = ReturnType<F['attach']> & ReturnType<F['deploy']>;
+ 
+-declare module 'hardhat/types/runtime' {
++declare module 'hardhat/types/hre' {
+   export interface HardhatRuntimeEnvironment {
+     upgrades: HardhatUpgrades;
+     defender: DefenderHardhatUpgrades;
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-beacon.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-beacon.ts
+index 980d80e..7c1524e 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-beacon.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-beacon.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory, Contract } from 'ethers';
+ 
+ import {
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-proxy.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-proxy.ts
+index 74e421e..2038be7 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-proxy.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/upgrade-proxy.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ethers, ContractFactory, Signer } from 'ethers';
+ import debug from './utils/debug';
+ import { getAdminAddress, getCode, getUpgradeInterfaceVersion, isEmptySlot } from '@openzeppelin/upgrades-core';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/attach-abi.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/attach-abi.ts
+index d4a6865..20629c3 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/attach-abi.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/attach-abi.ts
+@@ -6,7 +6,7 @@ import ITransparentUpgradeableProxyV4 from '@openzeppelin/upgrades-core/artifact
+ import ProxyAdminV5 from '@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts-v5/proxy/transparent/ProxyAdmin.sol/ProxyAdmin.json';
+ import ProxyAdminV4 from '@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol/ProxyAdmin.json';
+ 
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ 
+ export async function attachITransparentUpgradeableProxyV5(
+   hre: HardhatRuntimeEnvironment,
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/contract-instance.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/contract-instance.ts
+index cafb4cc..257da65 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/contract-instance.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/contract-instance.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ import assert from 'assert';
+ 
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy-impl.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy-impl.ts
+index 94e9d97..fc4cde2 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy-impl.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy-impl.ts
+@@ -10,7 +10,7 @@ import {
+   Version,
+ } from '@openzeppelin/upgrades-core';
+ import type { ContractFactory, ethers } from 'ethers';
+-import type { EthereumProvider, HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { EthereumProvider, HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { deploy } from './deploy';
+ import { GetTxResponse, DefenderDeployOptions, StandaloneOptions, UpgradeOptions, withDefaults } from './options';
+ import { getRemoteDeployment } from '../defender/utils';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy.ts
+index 9543317..3101296 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/deploy.ts
+@@ -1,6 +1,6 @@
+ import type { Deployment, RemoteDeploymentId } from '@openzeppelin/upgrades-core';
+ import type { ethers, ContractFactory, ContractMethodArgs } from 'ethers';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { defenderDeploy } from '../defender/deploy';
+ import { EthersDeployOptions, DefenderDeployOptions, UpgradeOptions } from './options';
+ 
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/etherscan-api.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/etherscan-api.ts
+index ac15730..839358e 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/etherscan-api.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/etherscan-api.ts
+@@ -1,5 +1,5 @@
+ import { UpgradesError } from '@openzeppelin/upgrades-core';
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ 
+ import { request } from 'undici';
+ 
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/factories.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/factories.ts
+index ba1a075..52c2313 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/factories.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/factories.ts
+@@ -5,7 +5,7 @@ import BeaconProxy from '@openzeppelin/upgrades-core/artifacts/@openzeppelin/con
+ import UpgradeableBeacon from '@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts-v5/proxy/beacon/UpgradeableBeacon.sol/UpgradeableBeacon.json';
+ import TransparentUpgradeableProxy from '@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts-v5/proxy/transparent/TransparentUpgradeableProxy.sol/TransparentUpgradeableProxy.json';
+ 
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ 
+ export async function getProxyFactory(hre: HardhatRuntimeEnvironment, signer?: Signer): Promise<ContractFactory> {
+   return hre.ethers.getContractFactory(ERC1967Proxy.abi, ERC1967Proxy.bytecode, signer);
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/simulate-deploy.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/simulate-deploy.ts
+index b8e144c..7f19ce6 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/simulate-deploy.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/simulate-deploy.ts
+@@ -1,6 +1,6 @@
+ import { fetchOrDeploy } from '@openzeppelin/upgrades-core';
+ import type { ContractFactory } from 'ethers';
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { getDeployData } from './deploy-impl';
+ import { UpgradeOptions } from './options';
+ 
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/validations.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/validations.ts
+index 8367d8a..410e6fe 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/utils/validations.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/utils/validations.ts
+@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
+ import path from 'path';
+ import lockfile from 'proper-lockfile';
+ 
+-import type { HardhatRuntimeEnvironment } from 'hardhat/types';
++import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import {
+   ValidationDataCurrent,
+   ValidationRunData,
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/validate-implementation.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/validate-implementation.ts
+index 8cb2946..8afc5f0 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/validate-implementation.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/validate-implementation.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import type { ContractFactory } from 'ethers';
+ 
+ import { validateImpl } from './utils/validate-impl';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/validate-upgrade.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/validate-upgrade.ts
+index f407c87..4d29d68 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/validate-upgrade.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/validate-upgrade.ts
+@@ -1,4 +1,4 @@
+-import { HardhatRuntimeEnvironment } from 'hardhat/types';
++import { HardhatRuntimeEnvironment } from 'hardhat/types/hre';
+ import { ContractFactory } from 'ethers';
+ 
+ import { ContractAddressOrInstance, getContractAddress } from './utils';
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/src/verify-proxy.ts b/node_modules/@openzeppelin/hardhat-upgrades/src/verify-proxy.ts
+index 7e117c2..bc0a293 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/src/verify-proxy.ts
++++ b/node_modules/@openzeppelin/hardhat-upgrades/src/verify-proxy.ts
+@@ -13,7 +13,7 @@ import {
+ } from '@openzeppelin/upgrades-core';
+ import artifactsBuildInfo from '@openzeppelin/upgrades-core/artifacts/build-info-v5.json';
+ 
+-import { HardhatRuntimeEnvironment, RunSuperFunction } from 'hardhat/types';
++import { HardhatRuntimeEnvironment, RunSuperFunction } from 'hardhat/types/hre';
+ 
+ import ERC1967Proxy from '@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts-v5/proxy/ERC1967/ERC1967Proxy.sol/ERC1967Proxy.json';
+ import BeaconProxy from '@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts-v5/proxy/beacon/BeaconProxy.sol/BeaconProxy.json';

@@ -1,0 +1,49 @@
+{
+  "name": "crowdfunding-platform",
+  "version": "1.0.0",
+  "description": "A decentralized crowdfunding platform built with Hardhat 3",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:gas": "REPORT_GAS=true hardhat test",
+    "deploy:local": "hardhat ignition deploy ignition/modules/Crowdfunding.ts --network localhost",
+    "deploy:sepolia": "hardhat ignition deploy ignition/modules/Crowdfunding.ts --network sepolia",
+    "node": "hardhat node",
+    "clean": "hardhat clean"
+  },
+  "keywords": [
+    "solidity",
+    "hardhat",
+    "crowdfunding",
+    "defi",
+    "ethereum"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.0.3",
+    "@nomicfoundation/hardhat-ethers-chai-matchers": "^3.0.2",
+    "@nomicfoundation/hardhat-ignition": "^3.0.0",
+    "@nomicfoundation/hardhat-ignition-ethers": "^3.0.6",
+    "@nomicfoundation/hardhat-keystore": "^3.0.3",
+    "@nomicfoundation/hardhat-mocha": "^3.0.8",
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.3",
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.2",
+    "@nomicfoundation/hardhat-typechain": "^3.0.1",
+    "@nomicfoundation/hardhat-verify": "^3.0.8",
+    "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/hardhat": "^9.1.0",
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "chai": "^5.1.2",
+    "dotenv": "^16.4.1",
+    "ethers": "^6.14.0",
+    "hardhat": "^3.1.0",
+    "mocha": "^11.7.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "type": "module"
+}
