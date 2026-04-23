@@ -1,0 +1,6 @@
+Sepolia 区块链浏览器：https://sepolia.etherscan.io/
+用于查询交易、合约、地址余额，验证部署的智能合约。
+Sepolia 水龙头（领取测试币）：https://sepolia-faucet.pk910.de/
+用于免费领取 SepoliaETH，需完成人机验证或 Gitcoin Passport 积分验证。
+Infura RPC 服务（获取 RPC URL）：https://infura.io/
+注册后创建项目，选择 Sepolia 网络，即可获取专属 RPC URL。
