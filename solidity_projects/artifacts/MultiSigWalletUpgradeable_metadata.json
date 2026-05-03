@@ -1,0 +1,731 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "ConfirmTransaction",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "ExecuteTransaction",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "version",
+						"type": "uint8"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "RevokeConfirmation",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "SubmitTransaction",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "newThreshold",
+						"type": "uint256"
+					}
+				],
+				"name": "ThresholdChanged",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "addOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "canExecute",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newThreshold",
+						"type": "uint256"
+					}
+				],
+				"name": "changeThreshold",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "confirmTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "executeTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getConfirmationCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwnerCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwners",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getThreshold",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getTransaction",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bool",
+						"name": "executed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numConfirmations",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTransactionCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_owners",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_numConfirmationsRequired",
+						"type": "uint256"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "isConfirmed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "isTransactionConfirmed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "numConfirmationsRequired",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "owners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "removeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "txIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "revokeConfirmation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "submitTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transactions",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bool",
+						"name": "executed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numConfirmations",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"details": "可升级的多签钱包合约，使用 OpenZeppelin 的 Initializable",
+			"events": {
+				"Initialized(uint8)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"addOwner(address)": {
+					"details": "添加新的所有者",
+					"params": {
+						"newOwner": "要添加的新所有者地址  验证步骤： 1. 验证新所有者地址不为零地址 2. 验证新所有者尚未存在 3. 添加到所有者列表并发出事件"
+					}
+				},
+				"canExecute(uint256)": {
+					"details": "检查交易是否可以执行",
+					"params": {
+						"txIndex": "交易索引"
+					},
+					"returns": {
+						"_0": "如果可以执行返回 true，否则返回 false  判断条件： 1. 交易未执行 2. 确认数达到或超过阈值"
+					}
+				},
+				"changeThreshold(uint256)": {
+					"details": "修改确认阈值",
+					"params": {
+						"newThreshold": "新的确认阈值  验证步骤： 1. 验证新阈值大于0 2. 验证新阈值不超过当前所有者总数 3. 更新阈值并发出事件"
+					}
+				},
+				"confirmTransaction(uint256)": {
+					"details": "确认交易提案",
+					"params": {
+						"txIndex": "交易索引  验证条件（通过修饰符）： 1. onlyOwner: 必须是所有者 2. txExists: 交易必须存在 3. notExecuted: 交易必须未执行 4. notConfirmed: 当前所有者必须未确认过  执行步骤： 1. 标记当前所有者已确认 2. 增加确认计数 3. 发出确认事件"
+					}
+				},
+				"executeTransaction(uint256)": {
+					"details": "执行交易提案",
+					"params": {
+						"txIndex": "交易索引  验证条件（通过修饰符）： 1. onlyOwner: 必须是所有者 2. txExists: 交易必须存在 3. notExecuted: 交易必须未执行  执行流程： 1. 验证确认数是否达到阈值 2. 标记交易为已执行（防止重入攻击） 3. 执行外部调用（发送 ETH 或调用合约函数） 4. 验证执行结果 5. 发出执行事件  安全特性： - 使用 Checks-Effects-Interactions 模式防止重入攻击 - 先更新状态（executed = true），再执行外部调用 - 验证外部调用是否成功，失败则回滚"
+					}
+				},
+				"initialize(address[],uint256)": {
+					"details": "初始化函数，在代理部署时调用",
+					"params": {
+						"_numConfirmationsRequired": "需要的确认数（阈值）  工作流程： 1. 初始化上下文（ContextUpgradeable） 2. 验证所有者列表不为空 3. 验证确认阈值有效（大于0且不超过所有者数量） 4. 遍历所有者列表，验证并添加每个所有者 5. 设置确认阈值",
+						"_owners": "初始所有者列表"
+					}
+				},
+				"removeOwner(address)": {
+					"details": "移除所有者",
+					"params": {
+						"owner": "要移除的所有者地址  验证步骤： 1. 验证要移除的地址确实是所有者 2. 验证移除后剩余所有者数量仍能满足确认阈值要求 3. 从数组中移除（使用交换技巧提高效率） 4. 发出移除事件"
+					}
+				},
+				"revokeConfirmation(uint256)": {
+					"details": "撤销确认",
+					"params": {
+						"txIndex": "交易索引  验证条件： 1. onlyOwner: 必须是所有者 2. txExists: 交易必须存在 3. notExecuted: 交易必须未执行 4. 必须已经确认过（通过 require 检查）  执行步骤： 1. 验证当前所有者确实确认过 2. 取消确认标记 3. 减少确认计数 4. 发出撤销确认事件"
+					}
+				},
+				"submitTransaction(address,uint256,bytes)": {
+					"details": "提交交易提案",
+					"params": {
+						"data": "调用数据（如果是调用合约函数，需要编码函数签名和参数）  工作流程： 1. 创建新的交易提案 2. 初始状态：未执行，确认数为0 3. 发出提交交易事件  使用场景： - 纯 ETH 转账：data 设为 \"0x\" - 调用合约：data 包含函数签名和参数的编码",
+						"to": "目标地址（接收 ETH 或调用合约的地址）",
+						"value": "要发送的 ETH 数量（单位：wei）"
+					}
+				}
+			},
+			"stateVariables": {
+				"__gap": {
+					"details": "为未来升级预留存储空间 在升级时添加新状态变量时，需要确保不覆盖现有存储槽"
+				}
+			},
+			"title": "MultiSigWalletUpgradeable",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addOwner(address)": {
+					"notice": "只有现有所有者可以添加新所有者"
+				},
+				"canExecute(uint256)": {
+					"notice": "用于前端判断交易是否满足执行条件"
+				},
+				"changeThreshold(uint256)": {
+					"notice": "只有所有者可以修改确认阈值"
+				},
+				"confirmTransaction(uint256)": {
+					"notice": "所有者对交易提案进行确认，当确认数达到阈值后可以执行"
+				},
+				"executeTransaction(uint256)": {
+					"notice": "当交易提案达到足够的确认数后，任何所有者都可以执行它"
+				},
+				"initialize(address[],uint256)": {
+					"notice": "这是可升级合约的初始化函数，替代构造函数"
+				},
+				"removeOwner(address)": {
+					"notice": "只有现有所有者可以移除其他所有者"
+				},
+				"revokeConfirmation(uint256)": {
+					"notice": "所有者可以撤销之前对交易提案的确认（仅在交易未执行前）"
+				},
+				"submitTransaction(address,uint256,bytes)": {
+					"notice": "所有者可以提交新的交易提案，需要其他所有者确认后才能执行"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/hardhat_multisig_wallet/MultiSigWalletUpgradeable.sol": "MultiSigWalletUpgradeable"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x89be10e757d242e9b18d5a32c9fbe2019f6d63052bbe46397a430a1d60d7f794",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f103ee2e4aecd37aac6ceefe670709cdd7613dee25fa2d4d9feaf7fc0aaa155e",
+				"dweb:/ipfs/QmRiNZLoJk5k3HPMYGPGjZFd2ke1ZxjhJZkM45Ec9GH9hv"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+			"keccak256": "0x9c80f545915582e63fe206c6ce27cbe85a86fc10b9cd2a0e8c9488fb7c2ee422",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://310136ad60820af4177a11a61d77a3686faf5fca4942b600e08fc940db38396b",
+				"dweb:/ipfs/QmbCzMNSTL7Zi7M4UCSqBrkHtp4jjxUnGbkneCZKdR1qeq"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+			"keccak256": "0x75097e35253e7fb282ee4d7f27a80eaacfa759923185bf17302a89cbc059c5ef",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8b06267c5f80bad727af3e48b1382333d591dad51376399ef2f6b0ee6d58bf95",
+				"dweb:/ipfs/QmdU5La1agcQvghnfMpWZGDPz2TUDTCxUwTLKmuMRXBpAx"
+			]
+		},
+		"contracts/hardhat_multisig_wallet/MultiSigWalletUpgradeable.sol": {
+			"keccak256": "0x6d1e291c184d2b10a269cc2b4113133583b60c2b0d275270584b122e96868ef7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0761edb57d9de908db8bbec07df378ad09fb682f3be24003adbc63ef586f59ea",
+				"dweb:/ipfs/QmcQtLN8d4eyoMFTxagqekvECBDYC6ugTQsZrz2aMD2nkd"
+			]
+		}
+	},
+	"version": 1
+}

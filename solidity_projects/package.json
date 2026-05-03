@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "encode-proxy-init": "node scripts/encodeProxyInitData.cjs"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^1.5.0",
+    "@chainlink/contracts-ccip": "^1.6.4",
+    "@openzeppelin/contracts": "^4.9.6"
+  },
+  "devDependencies": {
+    "ethers": "^6.16.0"
+  }
+}

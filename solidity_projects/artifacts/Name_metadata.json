@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/IERC20.sol": "Name"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/IERC20.sol": {
+			"keccak256": "0xc567501775de4e03f2dc5e8cb9b5d23d618f970ae8d33a3a6b2272f5aa358aef",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://fc390cbbcf0d4211b6d518b0afe76f4254337706f0e7ac49ad2c9af529e08abd",
+				"dweb:/ipfs/QmQ4pCADzBJsSnKkiGhaQvShjkf5HGYnw2CDSyYKsjcfyb"
+			]
+		}
+	},
+	"version": 1
+}

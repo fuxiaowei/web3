@@ -1,0 +1,4 @@
+--进入solidity_projects目录
+--cmd之后执行下面命令
+
+remixd -s . --remix-ide https://remix.ethereum.org

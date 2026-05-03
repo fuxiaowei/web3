@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/CCIPReceiver.sol": "CCIPReceiver"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/CCIPReceiver.sol": {
+			"keccak256": "0xbf2e90ee4aa4142bd2aa48d833d7242381de76aebeaeaff01eefeae2d211e32d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ddb0efa6b149ad88483e15aea9228991b6cd4aa47b39fc720369300a379c1083",
+				"dweb:/ipfs/QmXPRbzjCgrQ619NNUw3iurvWC9jHDMjmKNq2Tna9ZUffu"
+			]
+		}
+	},
+	"version": 1
+}

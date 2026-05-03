@@ -1,0 +1,214 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "destinationChainSelector",
+						"type": "uint64"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint64",
+								"name": "destinationChainSelector",
+								"type": "uint64"
+							},
+							{
+								"internalType": "address",
+								"name": "receiver",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes",
+								"name": "data",
+								"type": "bytes"
+							},
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "token",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct Client.EVMTokenAmount[]",
+								"name": "tokenAmounts",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "address",
+								"name": "feeToken",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes",
+								"name": "extraArgs",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct Client.Message",
+						"name": "message",
+						"type": "tuple"
+					}
+				],
+				"name": "ccipSend",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "destinationChainSelector",
+						"type": "uint64"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint64",
+								"name": "destinationChainSelector",
+								"type": "uint64"
+							},
+							{
+								"internalType": "address",
+								"name": "receiver",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes",
+								"name": "data",
+								"type": "bytes"
+							},
+							{
+								"components": [
+									{
+										"internalType": "address",
+										"name": "token",
+										"type": "address"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct Client.EVMTokenAmount[]",
+								"name": "tokenAmounts",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "address",
+								"name": "feeToken",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes",
+								"name": "extraArgs",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct Client.Message",
+						"name": "message",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bytes",
+						"name": "extraArgs",
+						"type": "bytes"
+					}
+				],
+				"name": "getFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "chainSelector",
+						"type": "uint64"
+					}
+				],
+				"name": "isChainSupported",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/IRouterClient.sol": "IRouterClient"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Client.sol": {
+			"keccak256": "0x971ff8ef6deedce3177bd53b467a10c5aa68ace1059a67b6a7da38be7c999150",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0bf29ed6346de843baf6272f3e2dfb49addacabcf367752c33fe5c34903c78d3",
+				"dweb:/ipfs/QmajqcQMfPmbCtwM7VXGqgYv5DEXGYvXWAbwENKCefLLgm"
+			]
+		},
+		"contracts/IRouterClient.sol": {
+			"keccak256": "0xe4f0c1300b415087aa16a7253610c43918faa7d2e752ca31e13ba46b90def7c1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3e300bc7e0114d66168fc66b2d7cdf3da32b054475de4a0b38858c9485cd0c8f",
+				"dweb:/ipfs/QmSCfiDFXr2zxtAzHNvUojgWpv2YfgR9GCXsRZREcWYEqD"
+			]
+		}
+	},
+	"version": 1
+}
