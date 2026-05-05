@@ -1,0 +1,25 @@
+{
+  "name": "hardhat-v3NFT-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:begging:sepolia": "hardhat run scripts/deploy-begging-contract-sepolia.js --network sepolia"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@chainlink/contracts": "^1.5.0",
+    "@chainlink/contracts-ccip": "^1.4.0",
+    "@openzeppelin/contracts": "^4.9.3",
+    "hardhat": "^3.2.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.0.6",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.16.0"
+  },
+  "type": "module"
+}
