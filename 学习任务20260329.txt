@@ -4,21 +4,28 @@
 
 2. 社区任务3相关的章节学习完，包含视频以及资料
 
-   https://github.com/MetaNodeAcademy/solidity_lesson/blob/main/README.md	（8.2以后）
+   https://github.com/MetaNodeAcademy/solidity_lesson/blob/main/README.md	 //（8.2以后）
 
-3. https://github.com/MetaNodeAcademy/Base2-Solidity/tree/main/3-solidity-coding/3.4%E8%B7%A8%E9%93%BE（跨链）
+3. https://github.com/MetaNodeAcademy/Base2-Solidity/tree/main/3-solidity-coding/3.4%E8%B7%A8%E9%93%BE    // 跨链
 
 4. 掌握可升级合约原理
 
-   https://github.com/MetaNodeAcademy/Base2-Solidity/tree/main/3-solidity-coding/3.2%E5%8F%AF%E5%8D%87%E7%BA%A7%E5%90%88%E7%BA%A6（文档）
+   https://github.com/MetaNodeAcademy/Base2-Solidity/tree/main/3-solidity-coding/3.2%E5%8F%AF%E5%8D%87%E7%BA%A7%E5%90%88%E7%BA%A6    //（文档）
 
-   https://meeting.tencent.com/wework/cloud-record/share?id=8acee3d0-2fc2-48f3-a702-b33e9906bd64&record_type=2&hide_more_btn=true&from=qywx（视频）
+   https://meeting.tencent.com/wework/cloud-record/share?id=8acee3d0-2fc2-48f3-a702-b33e9906bd64&record_type=2&hide_more_btn=true&from=qywx   //（视频）
 
    访问密码：0ZEX
 
 
 
    a：delegatecall 跟 call 的区别是什么
+      特性                           call                           delegatecall                  staticcall
+       执行上下文                     被调用合约                     调用者合约                        被调用合约
+       可以发送以太币                   可以                           不可以                         不可以
+       可以修改状态                     可以                           可以                          不可以
+       msg.sender                    调用者合约                      原始调用者                       调用者合约
+
+
 
    b：可升级合约的执行流程是什么（user -> proxy -> implementation）
 

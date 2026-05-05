@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Base2-Solidity" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/gin-vue-admin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/go-gin-api" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/golang-learning" vcs="Git" />
