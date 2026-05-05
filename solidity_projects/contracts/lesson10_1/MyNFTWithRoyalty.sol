@@ -32,17 +32,17 @@ contract MyNFTWithRoyalty is ERC721, ERC721Royalty, ERC721URIStorage, Ownable {
 
     /**
      * @dev 构造函数
-     * @param royaltyReceiver 版税接收地址
-     * @param royaltyBps 版税比例(基点：10000 = 100%)
+     * @param initialReceiver 版税接收地址
+     * @param initialBps 版税比例(基点：10000 = 100%)
      */
-    constructor(address royaltyReceiver, uint96 royaltyBps)
+    constructor(address initialReceiver, uint96 initialBps)
     ERC721("MyNFTWithRoyalty", "MNFR")
     Ownable(){
-        require(royaltyReceiver != address(0), "Invalid royalty receiver");
-        require(royaltyBps <= 1000, "Invalid royalty BPS"); // 最大10%
+        require(initialReceiver != address(0), "Invalid royalty receiver");
+        require(initialBps <= 1000, "Invalid royalty BPS"); // 最大10%
 
-        _royaltyReceiver = royaltyReceiver;
-        _royaltyBps = royaltyBps;
+        _royaltyReceiver = initialReceiver;
+        _royaltyBps = initialBps;
     }
 
     /**
@@ -66,14 +66,13 @@ contract MyNFTWithRoyalty is ERC721, ERC721Royalty, ERC721URIStorage, Ownable {
     }
 
     /**
-     * @dev 实现ERC2981标准:获取版税信息
-     * @param tokenId NFT的Token ID
+     * @dev 实现ERC2981标准:获取版税信息（全集合统一版税）
      * @param salePrice NFT的销售价格
      * @return receiver 版税接收地址
      * @return royaltyAmount 版税金额
      */
-    function royaltyInfo(uint256 tokenId, uint256 salePrice)
-    external
+    function royaltyInfo(uint256, uint256 salePrice)
+    public
     view
     override
     returns (address receiver, uint256 royaltyAmount) {
@@ -121,12 +120,19 @@ contract MyNFTWithRoyalty is ERC721, ERC721Royalty, ERC721URIStorage, Ownable {
     }
 
     /**
+     * @dev 合并 ERC721URIStorage 与 ERC721Royalty 的 _burn（清除 URI 与按 token 版税）
+     */
+    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage, ERC721Royalty) {
+        super._burn(tokenId);
+    }
+
+    /**
      * @dev 实现ERC165标准:检查支持的接口
      */
     function supportsInterface(bytes4 interfaceId)
     public
     view
-    override(ERC721, ERC721Royalty)
+    override(ERC721, ERC721URIStorage, ERC721Royalty)
     returns (bool)
     {
         return super.supportsInterface(interfaceId);
