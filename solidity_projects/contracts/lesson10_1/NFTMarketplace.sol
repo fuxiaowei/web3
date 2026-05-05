@@ -15,7 +15,7 @@ interface IERC2981 is IERC165 {
         uint256 tokenId,
         uint256 salePrice
     ) external view returns (
-        address reveiver,
+        address receiver,
         uint256 royaltyAmount
     );
 }
@@ -123,7 +123,7 @@ contract NFTMarketplace is ReentrancyGuard {
     event BidPlaced(
         uint256 indexed auctionId,
         address indexed bidder,
-        uint256 amout
+        uint256 amount
     );
 
     /**
@@ -174,7 +174,7 @@ contract NFTMarketplace is ReentrancyGuard {
         listingCounter++;
         listings[listingCounter] = Listing({
             seller: msg.sender,
-            nftcontract: nftContract,
+            nftContract: nftContract,
             tokenId: tokenId,
             price: price,
             active: true
@@ -236,11 +236,16 @@ contract NFTMarketplace is ReentrancyGuard {
         // 计算手续费
         uint256 fee = (listing.price * platformFee) / 10000;
 
-        // 获取版税信息
+        // 获取版税信息（恶意合约可能返回过高版税，需在售价内封顶）
         (address royaltyReceiver, uint256 royaltyAmount) = _getRoyaltyInfo(
-            listing.nftcontract,
+            listing.nftContract,
             listing.tokenId,
-            listing.price);
+            listing.price
+        );
+        uint256 maxRoyalty = listing.price - fee;
+        if (royaltyAmount > maxRoyalty) {
+            royaltyAmount = maxRoyalty;
+        }
 
         // 计算卖家收益
         uint256 sellerAmount = listing.price - fee - royaltyAmount;
@@ -301,6 +306,7 @@ contract NFTMarketplace is ReentrancyGuard {
 
         // 创建拍卖
         auctionCounter++;
+        uint256 endTime = block.timestamp + durationHours * 1 hours;
         auctions[auctionCounter] = Auction({
             seller: msg.sender,
             nftContract: nftContract,
@@ -308,11 +314,11 @@ contract NFTMarketplace is ReentrancyGuard {
             startPrice: startPrice,
             highestBid: 0,
             highestBidder: address(0),
-            endTime: block.timestamp + durationHours * 1 hours,
+            endTime: endTime,
             active: true
         });
 
-        emit AuctionCreated(auctionCounter, msg.sender, nftContract, tokenId, startPrice, durationHours * 1 hours);
+        emit AuctionCreated(auctionCounter, msg.sender, nftContract, tokenId, startPrice, endTime);
 
         return auctionCounter;
     }
@@ -389,6 +395,10 @@ contract NFTMarketplace is ReentrancyGuard {
                 auction.tokenId,
                 auction.highestBid
             );
+            uint256 maxRoyalty = auction.highestBid - fee;
+            if (royaltyAmount > maxRoyalty) {
+                royaltyAmount = maxRoyalty;
+            }
 
             uint256 sellerAmount = auction.highestBid - fee - royaltyAmount;
 
