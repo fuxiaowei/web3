@@ -1,5 +1,5 @@
 {
-  "name": "hardhat-v3NFT-project",
+  "name": "hardhat-v3nft-project",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@chainlink/contracts": "^1.5.0",
     "@chainlink/contracts-ccip": "^1.4.0",
@@ -21,5 +20,6 @@
     "dotenv": "^16.4.7",
     "ethers": "^6.16.0"
   },
-  "type": "module"
+  "type": "module",
+  "description": ""
 }
