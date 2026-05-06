@@ -13,7 +13,7 @@
   "dependencies": {
     "@chainlink/contracts": "^1.5.0",
     "@chainlink/contracts-ccip": "^1.4.0",
-    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts": "^4.9.6",
     "hardhat": "^3.2.0"
   },
   "devDependencies": {
