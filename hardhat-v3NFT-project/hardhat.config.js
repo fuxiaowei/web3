@@ -1,12 +1,18 @@
 import "dotenv/config";
 
 import hardhatEthersPlugin from "@nomicfoundation/hardhat-ethers";
+import hardhatIgnitionPlugin from "@nomicfoundation/hardhat-ignition";
 import hardhatMochaPlugin from "@nomicfoundation/hardhat-mocha";
 import hardhatViemPlugin from "@nomicfoundation/hardhat-viem";
 import { configVariable, defineConfig } from "hardhat/config";
 
 export default defineConfig({
-  plugins: [hardhatEthersPlugin, hardhatViemPlugin, hardhatMochaPlugin],
+  plugins: [
+    hardhatEthersPlugin,
+    hardhatViemPlugin,
+    hardhatMochaPlugin,
+    hardhatIgnitionPlugin,
+  ],
   solidity: {
     version: "0.8.28",
     npmFilesToBuild: [
