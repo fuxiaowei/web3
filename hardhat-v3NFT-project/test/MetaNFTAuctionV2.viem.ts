@@ -12,11 +12,34 @@ import { deployAuctionFixture, expectRevert } from "./helpers/auctionTestSetup.j
  */
 describe("MetaNFTAuctionV2", function () {
     let env: any;
+    // 把“人类可读美元值”转换为合约内部使用的 1e8 精度，
+    // 与 highestBidInDollar / Chainlink 常见 8 位小数口径保持一致。
+    const usd = (value: string) => parseUnits(value, 8);
 
     beforeEach(async function () {
         // 每个升级用例都从全新 V1 状态开始，防止升级副作用污染其他用例。
         env = await deployAuctionFixture();
     });
+
+    const upgradeToV2 = async () => {
+        // 统一升级步骤：
+        // 1) 部署 V2 实现
+        // 2) 通过 ProxyAdmin 升级代理
+        // 3) 以 V2 ABI 绑定同一代理地址返回
+        // 这样可以避免每个用例重复写升级样板代码。
+        const newImpl = await env.viem.deployContract("MetaNFTAuctionV2");
+        const proxyAsV2 = await env.viem.getContractAt(
+            "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:ITransparentUpgradeableProxy",
+            env.proxy.address
+        );
+
+        await env.proxyAdmin.write.upgrade(
+            [proxyAsV2.address, newImpl.address],
+            { account: env.proxyAdminSigner.account }
+        );
+
+        return env.viem.getContractAt("MetaNFTAuctionV2", env.proxy.address);
+    };
 
     describe("upgrade", function () {
         it("should upgrade contract successfully", async function () {
@@ -27,22 +50,8 @@ describe("MetaNFTAuctionV2", function () {
             );
             const oldAuctionId = await env.auction.read.auctionId();
             // 部署新实现合约（V2）。
-            const newImpl = await env.viem.deployContract("MetaNFTAuctionV2");
-
-            // 以 ITransparentUpgradeableProxy ABI 访问代理，调用 upgrade 所需接口。
-            const proxyAsV2 = await env.viem.getContractAt(
-                "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:ITransparentUpgradeableProxy",
-                env.proxy.address
-            );
-
-            // 由 ProxyAdmin owner 执行升级，贴近生产治理路径。
-            await env.proxyAdmin.write.upgrade(
-                [proxyAsV2.address, newImpl.address],
-                { account: env.proxyAdminSigner.account }
-            );
-
             // 升级后仍是同一代理地址，但需要切到 V2 ABI 读取新接口。
-            const upgradedAuction = await env.viem.getContractAt("MetaNFTAuctionV2", env.proxy.address);
+            const upgradedAuction = await upgradeToV2();
 
             // 核心回归1：旧状态不丢（存储布局兼容）。
             const newAuctionId = await upgradedAuction.read.auctionId();
@@ -86,19 +95,7 @@ describe("MetaNFTAuctionV2", function () {
                 { account: env.admin.account }
             );
             const newEthOracle = await env.viem.deployContract("MockOracle", [parseUnits("3000", 8)]);
-            const newImpl = await env.viem.deployContract("MetaNFTAuctionV2");
-
-            const proxyAsV2 = await env.viem.getContractAt(
-                "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:ITransparentUpgradeableProxy",
-                env.proxy.address
-            );
-
-            await env.proxyAdmin.write.upgrade(
-                [proxyAsV2.address, newImpl.address],
-                { account: env.proxyAdminSigner.account }
-            );
-
-            const upgradedAuction = await env.viem.getContractAt("MetaNFTAuctionV2", env.proxy.address);
+            const upgradedAuction = await upgradeToV2();
 
             // 升级后更新 ETH 预言机地址，验证管理员写路径仍正常。
             await upgradedAuction.write.setTokenOracle([zeroAddress, newEthOracle.address], { account: env.admin.account });
@@ -106,6 +103,99 @@ describe("MetaNFTAuctionV2", function () {
             // 读回价格验证更新生效，确保新实现与旧存储配合正常。
             const newPrice = await upgradedAuction.read.getPriceInDollar([zeroAddress]);
             expect(newPrice).to.equal(parseUnits("3000", 8));
+        });
+    });
+
+    describe("dynamic fee by USD tiers", function () {
+        it("should apply ETH fee based on highestBidInDollar", async function () {
+            // 先创建拍卖，再升级到 V2，确保“升级前创建的数据”也能使用新结算逻辑。
+            await env.auction.write.start(
+                [env.seller.account.address, 1n, env.nft.address, 1000n, 30n, env.usdc.address],
+                { account: env.admin.account }
+            );
+            const currentAuctionId = (await env.auction.read.auctionId()) - 1n;
+            const upgradedAuction = await upgradeToV2();
+
+            // 分段规则：<=2000 美元收 3%，<=5000 美元收 2%，>5000 美元收 1%
+            await upgradedAuction.write.setFeeRecipient([env.bidder2.account.address], { account: env.admin.account });
+            await upgradedAuction.write.setDynamicFeeConfig(
+                [usd("2000"), usd("5000"), 300, 200, 100],
+                { account: env.admin.account }
+            );
+
+            const bidAmount = parseUnits("2", 18); // 2 ETH * 3000 = 6000 USD，命中第 3 档 1%
+            const expectedFee = parseUnits("0.02", 18);
+
+            const sellerBalanceBefore = await env.networkConnection.ethers.provider.getBalance(env.seller.account.address);
+            const feeRecipientBalanceBefore = await env.networkConnection.ethers.provider.getBalance(env.bidder2.account.address);
+
+            await upgradedAuction.write.bid([currentAuctionId, bidAmount], {
+                account: env.bidder1.account,
+                value: bidAmount
+            });
+
+            // 拍卖到期后执行结算，验证“卖家净收 + 平台抽佣”两条资金流。
+            await env.networkConnection.ethers.provider.send("evm_increaseTime", [31]);
+            await env.networkConnection.ethers.provider.send("evm_mine");
+            await upgradedAuction.write.end([currentAuctionId], { account: env.admin.account });
+
+            const sellerBalanceAfter = await env.networkConnection.ethers.provider.getBalance(env.seller.account.address);
+            const feeRecipientBalanceAfter = await env.networkConnection.ethers.provider.getBalance(env.bidder2.account.address);
+
+            expect(sellerBalanceAfter - sellerBalanceBefore).to.equal(bidAmount - expectedFee);
+            expect(feeRecipientBalanceAfter - feeRecipientBalanceBefore).to.equal(expectedFee);
+        });
+
+        it("should apply ERC20 fee based on highestBidInDollar", async function () {
+            // 与 ETH 场景同理，这里验证 ERC20 结算路径的动态手续费。
+            await env.auction.write.start(
+                [env.seller.account.address, 2n, env.nft.address, 1000n, 30n, env.usdc.address],
+                { account: env.admin.account }
+            );
+            const currentAuctionId = (await env.auction.read.auctionId()) - 1n;
+            const upgradedAuction = await upgradeToV2();
+
+            await upgradedAuction.write.setFeeRecipient([env.bidder2.account.address], { account: env.admin.account });
+            // 2500 USDC 会落在第 2 档（2%）
+            await upgradedAuction.write.setDynamicFeeConfig(
+                [usd("2000"), usd("4000"), 300, 200, 100],
+                { account: env.admin.account }
+            );
+
+            const bidAmount = parseUnits("2500", 6);
+            const expectedFee = parseUnits("50", 6);
+
+            // 准备 ERC20 资金和授权，确保 bid() 可成功 transferFrom。
+            await env.usdc.write.mint([env.bidder1.account.address, parseUnits("5000", 6)], { account: env.admin.account });
+            await env.usdc.write.approve([upgradedAuction.address, bidAmount], { account: env.bidder1.account });
+
+            const sellerBefore = await env.usdc.read.balanceOf([env.seller.account.address]);
+            const recipientBefore = await env.usdc.read.balanceOf([env.bidder2.account.address]);
+
+            await upgradedAuction.write.bid([currentAuctionId, bidAmount], { account: env.bidder1.account });
+
+            // 到期后结算，核对卖家与手续费接收者余额变化。
+            await env.networkConnection.ethers.provider.send("evm_increaseTime", [31]);
+            await env.networkConnection.ethers.provider.send("evm_mine");
+            await upgradedAuction.write.end([currentAuctionId], { account: env.admin.account });
+
+            const sellerAfter = await env.usdc.read.balanceOf([env.seller.account.address]);
+            const recipientAfter = await env.usdc.read.balanceOf([env.bidder2.account.address]);
+
+            expect(sellerAfter - sellerBefore).to.equal(bidAmount - expectedFee);
+            expect(recipientAfter - recipientBefore).to.equal(expectedFee);
+        });
+
+        it("should fail when non-admin updates fee config", async function () {
+            const upgradedAuction = await upgradeToV2();
+            // 配置类接口受 onlyAdmin 保护，非管理员调用必须失败。
+            await expectRevert(
+                upgradedAuction.write.setDynamicFeeConfig(
+                    [usd("2000"), usd("5000"), 300, 200, 100],
+                    { account: env.seller.account }
+                ),
+                "not admin"
+            );
         });
     });
 });

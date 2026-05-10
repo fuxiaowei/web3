@@ -211,7 +211,7 @@ contract MetaNFTAuction is Initializable {
     /// @notice 结束拍卖并完成结算：转移 NFT 给最高出价人，并将最高出价转给卖家。
     /// @dev 该函数未限制调用者，任何人都可在拍卖到期后触发结算（只要满足条件）。
     /// @param _auctionId 待结束的拍卖编号
-    function end(uint256 _auctionId) external {
+    function end(uint256 _auctionId) external virtual {
         Auction storage auction = auctions[_auctionId];
         require(isEnded(_auctionId), "not ended");
         require(auction.highestBidder != address(0), "no bids");
