@@ -64,12 +64,12 @@ describe("MetaNFTAuction", function () {
 
         // 部署逻辑合约（Implementation），后续由 Transparent Proxy 指向它
         // 并通过 initData 在代理构造时执行初始化。
-        // 注意：合约里函数名是历史拼写 initalize（不是 initialize）。
+        // 代理部署时会通过 initialize 完成初始化。
         const impl = await viem.deployContract("MetaNFTAuction");
 
         const initData = encodeFunctionData({
             abi: (await hre.artifacts.readArtifact("MetaNFTAuction")).abi,
-            functionName: "initalize",
+            functionName: "initialize",
             args: [admin.account.address]
         });
 
@@ -130,11 +130,11 @@ describe("MetaNFTAuction", function () {
         });
     });
 
-    describe("initalize", function () {
+    describe("initialize", function () {
         it("should fail when initialized twice", async function () {
-            // 代理部署时已经执行过一次 initalize，再调应触发 Initializable 防重入
+            // 代理部署时已经执行过一次 initialize，再调应触发 Initializable 防重入
             await expectRevert(
-                auction.write.initalize([admin.account.address], { account: admin.account }),
+                auction.write.initialize([admin.account.address], { account: admin.account }),
                 "already initialized"
             );
         });

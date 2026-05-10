@@ -14,13 +14,23 @@ export default defineConfig({
     hardhatIgnitionPlugin,
   ],
   solidity: {
-    version: "0.8.28",
+    version: "0.8.19",
+    settings: {
+      evmVersion: "paris",
+    },
     npmFilesToBuild: [
       "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol",
       "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol",
     ],
   },
   networks: {
+    ganache: {
+      type: "http",
+      chainType: "l1",
+      chainId: 1337,
+      url: "http://127.0.0.1:7545",
+      accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
+    },
     sepolia: {
       type: "http",
       chainType: "l1",

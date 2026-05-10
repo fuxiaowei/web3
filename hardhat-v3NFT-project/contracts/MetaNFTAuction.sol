@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.28;
+pragma solidity ^0.8.19;
 
 // ERC721：拍卖标的 NFT；ERC20：支付代币；IERC20Metadata：代币小数位等，供价格换算使用
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -12,7 +12,7 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
 
 /// @title MetaNFTAuction  主拍卖合约，实现拍卖逻辑
 /// @notice 可升级代理场景下的 NFT 拍卖合约骨架（`Initializable`）；当前仅定义状态与事件，业务逻辑待实现。
-/// @dev 逻辑合约的 `constructor` 中调用 `_disableInitializers()`；代理部署后再通过 `initalize` 设置 `admin`。
+/// @dev 逻辑合约的 `constructor` 中调用 `_disableInitializers()`；代理部署后再通过 `initialize` 设置 `admin`。
 ///      `tokenToOracle` 供后续按支付代币解析预言机；具体创建拍卖、出价、结算函数待实现。
 contract MetaNFTAuction is Initializable {
     /// @notice 管理员地址，通常用于暂停、改参或紧急提款等（具体权限在实现函数中定义）。
@@ -67,15 +67,15 @@ contract MetaNFTAuction is Initializable {
     }
 
     /// @notice 实现合约构造函数：禁用在本合约地址上的初始化器，防止逻辑实现被单独部署时重复初始化；
-    ///         真实初始化在代理指向本实现后，通过 `initalize` 完成。
+    ///         真实初始化在代理指向本实现后，通过 `initialize` 完成。
     constructor() {
         _disableInitializers();
     }
 
     /// @notice 代理部署后的一次性初始化：设置管理员。仅可成功调用一次（`initializer` 修饰符）。
     /// @param _admin 管理员地址，不可为零地址
-    /// @dev 函数名为历史拼写 `initalize`；对外 ABI 需与此保持一致。
-    function initalize(address _admin) external initializer {
+    /// @dev 初始化函数供代理在部署时调用。
+    function initialize(address _admin) external initializer {
         require(_admin != address(0), "invalid admin");
         admin = _admin;
     }
