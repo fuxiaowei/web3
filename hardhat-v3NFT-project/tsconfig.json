@@ -9,5 +9,5 @@
     "noEmit": true,
     "types": ["node", "mocha", "chai"]
   },
-  "include": ["test/**/*.ts", "ignition/**/*.ts", "ignition/**/*.d.ts"]
+  "include": ["test/**/*.ts", "ignition/**/*.ts", "ignition/**/*.d.ts", "scripts/**/*.ts"]
 }

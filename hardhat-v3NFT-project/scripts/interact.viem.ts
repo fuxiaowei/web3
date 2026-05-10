@@ -1,4 +1,4 @@
-import { createPublicClient, createWalletClient, http, parseUnits, formatUnits, parseEther, formatEther, zeroAddress } from "viem";
+import { createPublicClient, createWalletClient, http, formatUnits, formatEther, zeroAddress } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import hre from "hardhat";
 
@@ -13,25 +13,17 @@ async function getAuctionABI() {
 
 async function main() {
   const account = privateKeyToAccount(PRIVATE_KEY);
-  const AUCTION_ABI = await getAuctionABI();
+  const AUCTION_ABI = (await getAuctionABI()) as any;
+  const transport = http(RPC_URL);
   
-  const hardhatChain = {
-    id: 31337,
-    name: "hardhat",
-    nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-    rpcUrls: { default: { http: [RPC_URL] } }
-  } as const;
-
   const publicClient = createPublicClient({
-    chain: hardhatChain,
-    transport: http(RPC_URL)
-  });
+    transport
+  } as any) as any;
 
   const walletClient = createWalletClient({
     account,
-    chain: hardhatChain,
-    transport: http(RPC_URL)
-  });
+    transport
+  } as any) as any;
 
   console.log("=== MetaNFTAuction 交互脚本 ===\n");
   console.log("连接地址:", AUCTION_ADDRESS);
@@ -47,20 +39,20 @@ async function main() {
   });
   console.log("1. 合约版本:", version);
 
-  const auctionId = await publicClient.readContract({
+  const auctionId = (await publicClient.readContract({
     address: AUCTION_ADDRESS,
     abi: AUCTION_ABI,
     functionName: "auctionId"
-  });
+  })) as bigint;
   console.log("2. 当前拍卖ID:", auctionId.toString());
 
   if (auctionId > 0n) {
-    const auctionData = await publicClient.readContract({
+    const auctionData = (await publicClient.readContract({
       address: AUCTION_ADDRESS,
       abi: AUCTION_ABI,
       functionName: "auctions",
       args: [0n]
-    });
+    })) as any[];
     
     console.log("\n3. 拍卖 #0 详情:");
     console.log("   - NFT地址:", auctionData[0]);
@@ -75,28 +67,28 @@ async function main() {
     console.log("   - 最高出价(美元):", formatUnits(auctionData[9], 8));
     console.log("   - 最高出价代币:", auctionData[10]);
 
-    const ended = await publicClient.readContract({
+    const ended = (await publicClient.readContract({
       address: AUCTION_ADDRESS,
       abi: AUCTION_ABI,
       functionName: "isEnded",
       args: [0n]
-    });
+    })) as boolean;
     console.log("\n4. 拍卖 #0 是否已结束:", ended);
 
-    const ethPrice = await publicClient.readContract({
+    const ethPrice = (await publicClient.readContract({
       address: AUCTION_ADDRESS,
       abi: AUCTION_ABI,
       functionName: "getPriceInDollar",
       args: [zeroAddress]
-    });
+    })) as bigint;
     console.log("5. ETH 价格(美元):", formatUnits(ethPrice, 8));
 
-    const oracle = await publicClient.readContract({
+    const oracle = (await publicClient.readContract({
       address: AUCTION_ADDRESS,
       abi: AUCTION_ABI,
       functionName: "tokenToOracle",
       args: [zeroAddress]
-    });
+    })) as `0x${string}`;
     console.log("6. ETH Oracle 地址:", oracle);
   }
 
@@ -105,17 +97,17 @@ async function main() {
   console.log("注意: 以下代码展示了如何调用合约函数，实际使用时需要取消注释\n");
 
   // 示例 1: 设置 Oracle
-  // console.log("1. 设置 ETH Oracle...");
-  // const oracleAddress = "0x1234567890123456789012345678901234567890" as `0x${string}`;
-  // const tx1 = await walletClient.writeContract({
-  //   address: AUCTION_ADDRESS,
-  //   abi: AUCTION_ABI,
-  //   functionName: "setTokenOracle",
-  //   args: [zeroAddress, oracleAddress]
-  // });
-  // console.log("交易哈希:", tx1);
-  // await publicClient.waitForTransactionReceipt({ hash: tx1 });
-  // console.log("Oracle 设置成功\n");
+  console.log("1. 设置 ETH Oracle...");
+  const oracleAddress = "0x1234567890123456789012345678901234567890" as `0x${string}`;
+  const tx1 = await walletClient.writeContract({
+    address: AUCTION_ADDRESS,
+    abi: AUCTION_ABI,
+    functionName: "setTokenOracle",
+    args: [zeroAddress, oracleAddress]
+  });
+  console.log("交易哈希:", tx1);
+  await publicClient.waitForTransactionReceipt({hash: tx1});
+  console.log("Oracle 设置成功\n");
 
   // 示例 2: 启动拍卖
   // console.log("2. 启动新拍卖...");
