@@ -1,0 +1,23 @@
+## **后端实战**
+
+### **1. 学习课件**
+
+课程课件：
+
+https://github.com/MetaNodeAcademy/golang-learning/tree/main/lesson-04
+
+### **2.补充学习资料（推荐）：**
+
+用 Go 做以太坊开发：
+
+https://goethereumbook.org/zh/
+
+ETH RPC 官方文档：
+
+https://ethereum.org/zh/developers/docs/apis/json-rpc/
+
+### **3. 实战任务**
+
+完成以下作业：
+
+https://github.com/MetaNodeAcademy/LearningRoadmap/blob/main/backend/homework05.md
