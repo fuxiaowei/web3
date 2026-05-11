@@ -6,7 +6,8 @@ type Action = "set-oracle" | "start" | "bid-eth" | "bid-erc20" | "end";
 
 const AUCTION_ADDRESS = (process.env.AUCTION_ADDRESS || "") as `0x${string}`;
 const RPC_URL = process.env.RPC_URL || "http://127.0.0.1:8545";
-const ACTION = ((process.argv[2] || process.env.ACTION || "").trim()) as Action;
+// Hardhat CLI 会在 argv 中包含 "run"，优先读取环境变量可避免被误判为动作名。
+const ACTION = ((process.env.ACTION || process.argv[2] || "").trim()) as Action;
 
 async function getAuctionABI() {
   const artifact = await hre.artifacts.readArtifact("MetaNFTAuction");

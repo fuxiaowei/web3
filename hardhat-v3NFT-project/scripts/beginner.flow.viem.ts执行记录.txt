@@ -1,0 +1,45 @@
+D:\wisest\web3\web3\hardhat-v3NFT-project>set "NFT_ID=3" && set "STEP=all" && set "BID_AMOUNT_ETH=1" && npx hardhat run scripts/beginner.flow.viem.ts --network ganache
+
+=== 新手拍卖流程脚本 ===
+STEP: all
+链 ID: 1337
+AUCTION: 0xFDA5d0fE9913c08c13a085dbA35BdBEb617Dd329
+NFT: 0xfb6BD90083539F235fc3422f44F6c29f78B23932
+SELLER: 0x90834B5abEa78D38405733381d6f47648aFcB59E
+BIDDER: 0x20c6d2d4375c916079876de9c34e983f3A313501
+
+[set-oracle] 发送交易中...
+[set-oracle] tx hash: 0x8b724d8bf6e7c5de8d2d82dfd84eb680638f02934c99b6b2b49c195fef23713b
+[set-oracle] 已确认，区块: 741
+
+[mint-nft] 发送交易中...
+[mint-nft] tx hash: 0x7980ddc5ffa83c39068dbfcd59f57fc09a54373fc5a8923d52e9bfaf374ecc22
+[mint-nft] 已确认，区块: 742
+
+[approve-nft] 发送交易中...
+[approve-nft] tx hash: 0x684912cb209b854be6d476b898da001b3f28ed225e323a33b8a31a718bb7a055
+[approve-nft] 已确认，区块: 743
+
+[start] 发送交易中...
+[start] tx hash: 0x3266bf7ace1217f014a3aa2ec4f1cd7aae25e6d79ac0a89656b3e15a1a22563e
+[start] 已确认，区块: 744
+
+[bid-eth] 发送交易中...
+[bid-eth] tx hash: 0x4a16dea0c53b5b580a7e99128b022148fe1bbbab3417f7d5f5b6911666225efd
+[bid-eth] 已确认，区块: 745
+[end] 拍卖未结束，自动快进 305 秒...
+
+[end] 发送交易中...
+[end] tx hash: 0x535c39afc824202f6857579ae39cfffbd84f29b353d41abd4bd97aa51395002d
+[end] 已确认，区块: 747
+
+=== 状态检查 ===
+合约版本: MetaNFTAuctionV1
+下一个 auctionId: 3
+拍卖ID: 2
+是否结束: true
+最高出价者: 0x20c6d2d4375c916079876de9c34e983f3A313501
+最高出价(美元): 3000
+
+全部步骤执行完成。
+

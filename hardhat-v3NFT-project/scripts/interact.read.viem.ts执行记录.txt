@@ -1,0 +1,31 @@
+D:\wisest\web3\web3\hardhat-v3NFT-project>set "QUERY_AUCTION_ID=2" && npx hardhat run scripts/interact.read.viem.ts --network ganache
+
+=== MetaNFTAuction 只读查询脚本 (viem) ===
+
+连接地址: 0xFDA5d0fE9913c08c13a085dbA35BdBEb617Dd329
+网络 ID: 1337
+
+1. 合约版本: MetaNFTAuctionV1
+2. 当前拍卖ID(下一个ID): 3
+
+3. 拍卖 #2 详情:
+   - NFT地址: 0xfb6BD90083539F235fc3422f44F6c29f78B23932
+   - NFT ID: 3
+   - 卖家: 0x90834B5abEa78D38405733381d6f47648aFcB59E
+   - 开始时间: 2026-05-11T13:14:05.000Z
+   - 最高出价者: 0x20c6d2d4375c916079876de9c34e983f3A313501
+   - 起拍价(美元): 1000
+   - 持续时间: 300 秒
+   - 支付代币: 0x1B295D69069a97213c0df6f126F2E3285Bc54713
+   - 最高出价(raw): 1000000000000000000
+   - 最高出价(美元): 3000
+   - 最高出价代币: 0x0000000000000000000000000000000000000000
+   - 最高出价(按ETH展示): 1 ETH
+
+4. 拍卖 #2 是否已结束: true
+5. ETH Oracle 地址: 0xA4E9FF68672b7d38A9b8B9388A86b21fb858163e
+6. ETH 价格(美元): 3000
+
+只读查询完成。
+
+D:\wisest\web3\web3\hardhat-v3NFT-project>

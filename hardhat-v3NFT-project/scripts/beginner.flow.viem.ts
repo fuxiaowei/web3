@@ -30,7 +30,8 @@ type Step =
   | "end"
   | "status";
 
-const STEP = ((process.argv[2] || process.env.STEP || "all").trim()) as Step;
+// Hardhat CLI 会在 argv 中包含 "run"，优先读取环境变量可避免被误判为步骤名。
+const STEP = ((process.env.STEP || process.argv[2] || "all").trim()) as Step;
 const RPC_URL = process.env.RPC_URL || "http://127.0.0.1:7545";
 const AUCTION_ADDRESS = (process.env.AUCTION_ADDRESS || "") as `0x${string}`;
 const NFT_ADDRESS = (process.env.NFT_ADDRESS || "") as `0x${string}`;

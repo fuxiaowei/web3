@@ -5,17 +5,21 @@ import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 const metaNFTAuctionProxyModule = buildModule(
   "MetaNFTAuctionProxyModule",
   (m) => {
-    // 取第 0 个账户作为代理管理员拥有者（部署者）。
+    // 取第 0 个账户作为代理管理员（Transparent Proxy admin）。
+    // 注意：该地址不能直接调用实现合约函数。
     const proxyAdminOwner = m.getAccount(0);
+    // 取第 1 个账户作为业务管理员（MetaNFTAuction.admin）。
+    // 该地址用于调用 onlyAdmin 的业务方法（setTokenOracle/start）。
+    const appAdmin = m.getAccount(1);
 
     // 部署拍卖合约实现（逻辑合约，不直接对外交互）。
     const auctionImpl = m.contract("MetaNFTAuction");
 
-    // 编码 initialize(proxyAdminOwner) 初始化调用，供代理构造时执行。
+    // 编码 initialize(appAdmin) 初始化调用，供代理构造时执行。
     const encodedFunctionCall = m.encodeFunctionCall(
       auctionImpl,
       "initialize",
-      [proxyAdminOwner],
+      [appAdmin],
     );
 
     // 部署透明代理：参数分别是实现地址、管理员地址、初始化 calldata。
