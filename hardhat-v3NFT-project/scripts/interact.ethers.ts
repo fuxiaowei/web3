@@ -17,6 +17,9 @@ async function main() {
   const provider = new ethers.JsonRpcProvider(RPC_URL);
   const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
   const AUCTION_ABI = await getAuctionABI();
+  // 透明代理：proxy admin 地址不能作为 `from` 对代理做业务调用（会 revert）。
+  // 只读查询用 provider，不附带 signer；写操作仍用 wallet。
+  const auctionRead = new ethers.Contract(AUCTION_ADDRESS, AUCTION_ABI, provider);
   const auction = new ethers.Contract(AUCTION_ADDRESS, AUCTION_ABI, wallet);
 
   console.log("=== MetaNFTAuction 交互脚本 (Ethers.js) ===\n");
@@ -26,14 +29,14 @@ async function main() {
 
   console.log("=== 查询操作 ===\n");
 
-  const version = await auction.getVersion();
+  const version = await auctionRead.getVersion();
   console.log("1. 合约版本:", version);
 
-  const auctionId = await auction.auctionId();
+  const auctionId = await auctionRead.auctionId();
   console.log("2. 当前拍卖ID:", auctionId.toString());
 
   if (auctionId > 0n) {
-    const auctionData = await auction.auctions(0);
+    const auctionData = await auctionRead.auctions(0);
     console.log("\n3. 拍卖 #0 详情:");
     console.log("   - NFT地址:", auctionData[0]);
     console.log("   - NFT ID:", auctionData[1].toString());
@@ -47,13 +50,13 @@ async function main() {
     console.log("   - 最高出价(美元):", ethers.formatUnits(auctionData[9], 8));
     console.log("   - 最高出价代币:", auctionData[10]);
 
-    const ended = await auction.isEnded(0);
+    const ended = await auctionRead.isEnded(0);
     console.log("\n4. 拍卖 #0 是否已结束:", ended);
 
-    const ethPrice = await auction.getPriceInDollar(ethers.ZeroAddress);
+    const ethPrice = await auctionRead.getPriceInDollar(ethers.ZeroAddress);
     console.log("5. ETH 价格(美元):", ethers.formatUnits(ethPrice, 8));
 
-    const oracle = await auction.tokenToOracle(ethers.ZeroAddress);
+    const oracle = await auctionRead.tokenToOracle(ethers.ZeroAddress);
     console.log("6. ETH Oracle 地址:", oracle);
   }
 

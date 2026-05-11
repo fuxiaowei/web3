@@ -1,0 +1,39 @@
+D:\wisest\web3\web3\hardhat-v3NFT-project>npx hardhat run scripts/interact.ethers.ts --network ganache
+
+=== MetaNFTAuction 交互脚本 (Ethers.js) ===
+
+连接地址: 0xFDA5d0fE9913c08c13a085dbA35BdBEb617Dd329
+钱包地址: 0xFFa961E0967a0e7e470305D55E508C2ac2615981
+网络: unknown
+
+=== 查询操作 ===
+
+1. 合约版本: MetaNFTAuctionV1
+2. 当前拍卖ID: 3
+
+3. 拍卖 #0 详情:
+   - NFT地址: 0xfb6BD90083539F235fc3422f44F6c29f78B23932
+   - NFT ID: 1
+   - 卖家: 0x90834B5abEa78D38405733381d6f47648aFcB59E
+   - 开始时间: 2026-05-11T12:42:18.000Z
+   - 最高出价者: 0x20c6d2d4375c916079876de9c34e983f3A313501
+   - 起拍价(美元): 1000.0
+   - 持续时间: 300 秒
+   - 支付代币: 0x1B295D69069a97213c0df6f126F2E3285Bc54713
+   - 最高出价: 1.0 ETH
+   - 最高出价(美元): 3000.0
+   - 最高出价代币: 0x0000000000000000000000000000000000000000
+
+4. 拍卖 #0 是否已结束: true
+5. ETH 价格(美元): 3000.0
+6. ETH Oracle 地址: 0xA4E9FF68672b7d38A9b8B9388A86b21fb858163e
+
+=== 交易操作示例 ===
+
+注意: 以下代码展示了如何调用合约函数，实际使用时需要取消注释
+
+=== 监听事件示例 ===
+
+脚本执行完成!
+
+D:\wisest\web3\web3\hardhat-v3NFT-project>

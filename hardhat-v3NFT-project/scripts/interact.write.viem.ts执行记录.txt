@@ -1,0 +1,18 @@
+D:\wisest\web3\web3\hardhat-v3NFT-project>set "ACTION=set-oracle"
+
+D:\wisest\web3\web3\hardhat-v3NFT-project>npx hardhat run scripts/interact.write.viem.ts --network ganache
+
+=== MetaNFTAuction 写操作脚本 (viem) ===
+ACTION: set-oracle
+合约地址: 0xFDA5d0fE9913c08c13a085dbA35BdBEb617Dd329
+执行账户: 0x90834B5abEa78D38405733381d6f47648aFcB59E
+网络 ID: 1337
+
+链上 MetaNFTAuction.admin (storage): 0x90834b5abea78d38405733381d6f47648afcb59e
+环境变量 SEPOLIA_PRIVATE_KEY2 对应地址: 0x90834B5abEa78D38405733381d6f47648aFcB59E
+
+setTokenOracle -> 发送交易中...
+setTokenOracle -> 交易哈希: 0x00135dbcc2db15641108f61829da65eff856f546d09f74d292e1a8eee7592820
+setTokenOracle -> 已确认，区块: 748
+
+D:\wisest\web3\web3\hardhat-v3NFT-project>
