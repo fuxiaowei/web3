@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"math/big"
+	"os"
 	"time"
 
 	"golang-learning-homework/homework-task2/counter" // 这里引入你生成的 Go 包
@@ -16,13 +17,11 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-// 配置
-const (
-	rpcURL     = "https://sepolia.infura.io/v3/你的APIKEY"
-	privateKey = "你的测试网私钥"
-)
-
 func main() {
+
+	rpcURL := os.Getenv("ETH_RPC_URL")
+	privateKey := os.Getenv("PRIVATE_KEY")
+
 	// 1. 连接 RPC
 	client, err := ethclient.Dial(rpcURL)
 	if err != nil {
