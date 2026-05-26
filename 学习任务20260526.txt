@@ -1,0 +1,57 @@
+### 合约实战学习
+
+1. meme合约（3个示例）学习
+
+   掌握常见的meme币机制（交易税、黑白名单、持币量控制、治理等）
+
+   https://github.com/MetaNodeAcademy/Advanced2-contract-upgrade/tree/main/Meme%E4%BB%A3%E5%B8%81%E7%B3%BB%E5%88%97/contracts
+
+2. MetaNodeStake项目写下测试用例，solidity-coverage测试一下覆盖率，最好达到80%以上
+
+   https://github.com/MetaNodeAcademy/Advanced2-contract-stake/tree/main/stake-contract
+
+   项目地址：https://meta-node-stake-fe.vercel.app
+
+3. MetaNodeSwap看懂测试用例，看下这几个文档，可以先学习一下uniswapV2，了解一下V3与V2的区别
+
+   推荐课程：https://space.bilibili.com/220951871/lists/5076602?type=season
+
+   UniswapV2：
+
+   a：理解什么是AMM，与订单簿的区别
+
+   b：AMM的核心算法是什么
+
+   c：什么是滑点，用户交易时怎么避免滑点过高（三明治攻击？怎么防止？）
+
+   d：LP的作用是什么？
+
+   e：什么是无偿损失？怎么计算
+
+   https://github.com/MetaNodeAcademy/Base2_Solidity_Dex/blob/main/%E7%B2%BE%E9%80%9AUniswap.md
+
+   https://github.com/MetaNodeAcademy/Base2_Solidity_Dex/blob/main/Uniswap%20V2%20%E6%95%B0%E5%AD%A6%E4%B8%8E%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB.md
+
+   https://github.com/Uniswap/v2-periphery	输出一个接口文档
+
+   https://github.com/Uniswap/v2-core
+
+   UniswapV3:
+
+   V3相对V2有了比较大的更新，主要是在于集中流动性、灵活的手续费等，需要掌握以下几个问题
+
+   a：集中流动性的优势是什么，怎么实现的
+
+   b：tick跟价格有什么关系，为什么需要tick
+
+   c：tickspacing跟费率有什么关系，为什么
+
+   https://github.com/Dapp-Learning-DAO/Dapp-Learning/blob/main/defi/Uniswap-V3/whitepaperGuide/understandV3Witepaper.md
+
+   MetaNodeSwap：
+
+   它是v3的一个简化版，需要掌握合约的业务逻辑，看懂测试用例
+
+   https://github.com/MetaNodeAcademy/Base2_Solidity_Dex/tree/main/swap-contract
+
+   项目地址：https://swap.metanode.tech
