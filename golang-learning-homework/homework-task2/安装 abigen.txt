@@ -1,0 +1,19 @@
+1.安装命令
+    go install github.com/ethereum/go-ethereum/cmd/abigen@latest
+2.检查是否安装成功
+    abigen --version
+3.使用 abigen 生成 Go 绑定代码
+    把 Counter.abi 和 Counter.bin 放在同一目录下，执行：
+    abigen --bin=Counter.bin --abi=Counter.abi --pkg=counter --out=Counter.go
+
+Remix工具artifacts目录下Counter.json 里面同时包含 abi 和 bytecode：
+打开它，找到 "abi": [...] → 复制保存为 Counter.abi
+找到 "bytecode": {"object": "......"} → 复制 object 里的字符串保存为 Counter.bin
+
+参数说明：
+--bin：字节码文件
+--abi：ABI 接口文件
+--pkg=counter：Go 包名
+--out=Counter.go：输出的 Go 文件
+生成成功后，你会得到：
+Counter.go
